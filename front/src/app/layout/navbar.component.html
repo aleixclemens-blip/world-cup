@@ -1,0 +1,40 @@
+<nav
+  class="fixed top-0 left-0 right-0 h-16 z-50 bg-white shadow-sm border-b border-gray-200 px-6 lg:px-16 xl:px-32 flex items-center justify-between">
+  <!-- Left Side: Logo and Application Name -->
+  <div class="flex items-center gap-3">
+    <img ngSrc="/assets/world-cup-icon.png" width="40" height="40" alt="Logotipo de la Copa Mundial" priority
+      class="object-contain" />
+    <span class="text-xl font-bold text-gray-950 select-none">World cup Tracker</span>
+  </div>
+
+  <!-- Right Side: Navigation Links and Auth Action -->
+  <div class="flex items-center gap-6">
+    <!-- Navigation Links -->
+    <div class="flex gap-6">
+      <a routerLink="/standings" routerLinkActive="text-gold-primary border-b-2 border-gold-primary font-semibold"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="text-gray-600 hover:text-gray-900 transition-colors py-2 px-1 text-sm font-medium"
+        aria-label="Ir a la clasificación">
+        Clasificación
+      </a>
+      <a routerLink="/results" routerLinkActive="text-gold-primary border-b-2 border-gold-primary font-semibold"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="text-gray-600 hover:text-gray-900 transition-colors py-2 px-1 text-sm font-medium"
+        aria-label="Ir a los resultados">
+        Resultados
+      </a>
+    </div>
+
+    <!-- User Profile / Auth Action -->
+    <button (click)="authService.toggleAuth()"
+      class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gold-primary cursor-pointer transition-colors"
+      [attr.aria-label]="authService.isAuthenticated() ? 'Cerrar sesión' : 'Iniciar sesión'"
+      title="Alternar estado de sesión">
+      @if (authService.isAuthenticated()) {
+      <span class="text-sm font-bold text-gold-primary select-none">{{ authService.userInitials() }}</span>
+      } @else {
+      <span class="material-icons text-gray-600 text-2xl select-none">person</span>
+      }
+    </button>
+  </div>
+</nav>

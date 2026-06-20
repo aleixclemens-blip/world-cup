@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+
+@theme {
+  --color-gold-primary: #D4AF37;
+  --color-gold-hover: #C59B27;
+  --color-gold-light: #F9F6E6;
+}
