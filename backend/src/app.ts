@@ -9,6 +9,8 @@ import routes from './routes';
 import { notFoundHandler } from './middleware/notFound';
 import { errorHandler } from './middleware/error';
 
+import cookieParser from 'cookie-parser';
+
 const app = express();
 
 app.use(helmet());
@@ -33,6 +35,7 @@ app.use(requestId);
 app.use(httpLogger);
 
 app.use(express.json({ limit: '100kb' }));
+app.use(cookieParser());
 
 app.use(routes);
 
