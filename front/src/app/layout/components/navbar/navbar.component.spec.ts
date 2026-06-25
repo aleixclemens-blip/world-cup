@@ -1,15 +1,37 @@
 import { TestBed } from '@angular/core/testing';
 import { NavbarComponent } from './navbar.component';
 import { provideRouter } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../../auth/services/auth.service';
+import { signal, computed } from '@angular/core';
+
+class MockAuthService {
+  public readonly currentUserSignal = signal<any>(null);
+  public readonly currentUser = this.currentUserSignal.asReadonly();
+  public readonly isAuthenticated = computed(() => !!this.currentUserSignal());
+  public readonly userInitials = computed(() => {
+    const user = this.currentUserSignal();
+    return user ? 'JD' : '';
+  });
+
+  public login(): void {
+    this.currentUserSignal.set({ id: 1, email: 'john@example.com' });
+  }
+
+  public logout(): void {
+    this.currentUserSignal.set(null);
+  }
+}
 
 describe('NavbarComponent', () => {
+  let authService: MockAuthService;
+
   beforeEach(async () => {
+    authService = new MockAuthService();
     await TestBed.configureTestingModule({
       imports: [NavbarComponent],
       providers: [
         provideRouter([]),
-        AuthService
+        { provide: AuthService, useValue: authService }
       ]
     }).compileComponents();
   });
@@ -29,48 +51,24 @@ describe('NavbarComponent', () => {
 
   it('should display initials when user is authenticated', () => {
     const fixture = TestBed.createComponent(NavbarComponent);
-    const authService = TestBed.inject(AuthService);
-
-    // Set to authenticated
     authService.login();
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    const button = compiled.querySelector('button');
-    expect(button?.textContent?.trim()).toBe('JD');
-    expect(button?.getAttribute('aria-label')).toBe('Cerrar sesión');
+    const link = compiled.querySelector('a[title="Perfil de usuario"]');
+    expect(link?.textContent?.trim()).toBe('JD');
+    expect(link?.getAttribute('aria-label')).toBe('Ver perfil');
   });
 
   it('should display person icon when user is logged out', () => {
     const fixture = TestBed.createComponent(NavbarComponent);
-    const authService = TestBed.inject(AuthService);
-
-    // Set to logged out
     authService.logout();
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    const button = compiled.querySelector('button');
-    const icon = button?.querySelector('.material-icons');
+    const link = compiled.querySelector('a[title="Perfil de usuario"]');
+    const icon = link?.querySelector('.material-icons');
     expect(icon?.textContent?.trim()).toBe('person');
-    expect(button?.getAttribute('aria-label')).toBe('Iniciar sesión');
-  });
-
-  it('should toggle auth when clicking avatar button', () => {
-    const fixture = TestBed.createComponent(NavbarComponent);
-    const authService = TestBed.inject(AuthService);
-    fixture.detectChanges();
-
-    const compiled = fixture.nativeElement as HTMLElement;
-    const button = compiled.querySelector('button');
-
-    expect(authService.isAuthenticated()).toBe(false);
-    button?.click();
-    fixture.detectChanges();
-    expect(authService.isAuthenticated()).toBe(true);
-
-    button?.click();
-    fixture.detectChanges();
-    expect(authService.isAuthenticated()).toBe(false);
+    expect(link?.getAttribute('aria-label')).toBe('Iniciar sesión');
   });
 });

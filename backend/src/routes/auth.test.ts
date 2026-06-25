@@ -90,8 +90,10 @@ describe('Auth Endpoints', () => {
 
       const cookies = res.headers['set-cookie'] as string[] | undefined;
       expect(cookies).toBeDefined();
-      const hasTokenCookie = cookies!.some((c) => c.startsWith('token='));
-      expect(hasTokenCookie).toBe(true);
+      const hasAccessTokenCookie = cookies!.some((c) => c.startsWith('accessToken='));
+      const hasRefreshTokenCookie = cookies!.some((c) => c.startsWith('refreshToken='));
+      expect(hasAccessTokenCookie).toBe(true);
+      expect(hasRefreshTokenCookie).toBe(true);
     });
 
     it('should fail to log in with incorrect password (401)', async () => {
@@ -120,12 +122,14 @@ describe('Auth Endpoints', () => {
         .post('/auth/login')
         .send({ email: testEmail, password: testPassword });
 
-      const cookie = (loginRes.headers['set-cookie'] as string[] | undefined)?.[0];
-      expect(cookie).toBeDefined();
+      const cookies = loginRes.headers['set-cookie'] as string[] | undefined;
+      expect(cookies).toBeDefined();
+      const accessTokenCookie = cookies!.find((c) => c.startsWith('accessToken='));
+      expect(accessTokenCookie).toBeDefined();
 
       const meRes = await request(app)
         .get('/auth/me')
-        .set('Cookie', [cookie!]);
+        .set('Cookie', [accessTokenCookie!]);
 
       expect(meRes.status).toBe(200);
       expect(meRes.body).toHaveProperty('email', testEmail);
@@ -141,8 +145,67 @@ describe('Auth Endpoints', () => {
 
       const cookies = res.headers['set-cookie'] as string[] | undefined;
       expect(cookies).toBeDefined();
-      const isCleared = cookies!.some((c) => c.startsWith('token=;'));
-      expect(isCleared).toBe(true);
+      const isAccessTokenCleared = cookies!.some((c) => c.startsWith('accessToken=;'));
+      const isRefreshTokenCleared = cookies!.some((c) => c.startsWith('refreshToken=;'));
+      expect(isAccessTokenCleared).toBe(true);
+      expect(isRefreshTokenCleared).toBe(true);
+    });
+  });
+
+  describe('POST /auth/refresh', () => {
+    beforeEach(async () => {
+      await request(app)
+        .post('/auth/register')
+        .send({ email: testEmail, password: testPassword });
+    });
+
+    it('should successfully refresh access and refresh tokens (200)', async () => {
+      const loginRes = await request(app)
+        .post('/auth/login')
+        .send({ email: testEmail, password: testPassword });
+
+      const cookies = loginRes.headers['set-cookie'] as string[];
+      const refreshTokenCookie = cookies.find((c) => c.startsWith('refreshToken='))!;
+
+      const refreshRes = await request(app)
+        .post('/auth/refresh')
+        .set('Cookie', [refreshTokenCookie]);
+
+      expect(refreshRes.status).toBe(200);
+      expect(refreshRes.body).toHaveProperty('message', 'Tokens refreshed successfully');
+
+      const newCookies = refreshRes.headers['set-cookie'] as string[];
+      expect(newCookies).toBeDefined();
+      expect(newCookies.some((c) => c.startsWith('accessToken='))).toBe(true);
+      expect(newCookies.some((c) => c.startsWith('refreshToken='))).toBe(true);
+    });
+
+    it('should fail to refresh if refresh token is missing (401)', async () => {
+      const res = await request(app).post('/auth/refresh');
+      expect(res.status).toBe(401);
+      expect(res.body).toHaveProperty('error', 'UnauthorizedError');
+    });
+
+    it('should fail to refresh if refresh token has been revoked (401)', async () => {
+      const loginRes = await request(app)
+        .post('/auth/login')
+        .send({ email: testEmail, password: testPassword });
+
+      const cookies = loginRes.headers['set-cookie'] as string[];
+      const refreshTokenCookie = cookies.find((c) => c.startsWith('refreshToken='))!;
+
+      // Logout to revoke the refresh token
+      await request(app)
+        .post('/auth/logout')
+        .set('Cookie', [refreshTokenCookie]);
+
+      // Attempt to refresh using the revoked token
+      const refreshRes = await request(app)
+        .post('/auth/refresh')
+        .set('Cookie', [refreshTokenCookie]);
+
+      expect(refreshRes.status).toBe(401);
+      expect(refreshRes.body).toHaveProperty('error', 'UnauthorizedError');
     });
   });
 });

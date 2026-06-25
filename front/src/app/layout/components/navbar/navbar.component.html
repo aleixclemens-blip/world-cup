@@ -26,15 +26,15 @@
     </div>
 
     <!-- User Profile / Auth Action -->
-    <button (click)="authService.toggleAuth()"
+    <a [routerLink]="authService.isAuthenticated() ? '/me' : '/login'"
       class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gold-primary cursor-pointer transition-colors"
-      [attr.aria-label]="authService.isAuthenticated() ? 'Cerrar sesión' : 'Iniciar sesión'"
-      title="Alternar estado de sesión">
+      [attr.aria-label]="authService.isAuthenticated() ? 'Ver perfil' : 'Iniciar sesión'"
+      title="Perfil de usuario">
       @if (authService.isAuthenticated()) {
       <span class="text-sm font-bold text-gold-primary select-none">{{ authService.userInitials() }}</span>
       } @else {
       <span class="material-icons text-gray-600 text-2xl select-none">person</span>
       }
-    </button>
+    </a>
   </div>
 </nav>

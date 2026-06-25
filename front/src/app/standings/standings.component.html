@@ -1,4 +1,107 @@
-<div class="max-w-7xl mx-auto px-6 py-8">
-  <h1 class="text-3xl font-bold text-gray-900 mb-4">Sección de Clasificación</h1>
-  <p class="text-gray-600">Aquí se mostrará la clasificación de los equipos de la Copa Mundial.</p>
+<div class="max-w-7xl mx-auto px-6 py-12">
+  <!-- Page Header -->
+  <div class="text-center mb-12">
+    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-gold-light text-gold-hover border border-gold-primary/20 mb-4 uppercase tracking-wider select-none">
+      <span class="material-icons text-sm">emoji_events</span>
+      Clasificación del Torneo
+    </span>
+    <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+      Fase de Grupos
+    </h1>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+      Sigue en directo la tabla de posiciones de cada grupo y descubre qué selecciones consiguen el billete a la fase de eliminatorias.
+    </p>
+  </div>
+
+  <!-- Responsive Grid of Groups -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+    @for (group of groups(); track group.groupName) {
+      <div class="bg-white/80 backdrop-blur-md border border-gray-200/80 shadow-sm rounded-2xl p-6 transition-all duration-300 hover:shadow-md hover:border-gold-primary/30 relative overflow-visible flex flex-col justify-between">
+        <div>
+          <!-- Group Title -->
+          <div class="flex items-center justify-between pb-3 mb-4 border-b-2 border-gold-primary/20">
+            <h2 class="text-xl font-bold text-gray-950 flex items-center gap-2 select-none">
+              <span class="w-2.5 h-2.5 rounded-full bg-gold-primary"></span>
+              {{ group.groupName }}
+            </h2>
+            <span class="text-xs font-medium text-gray-500 uppercase">Copa Mundial 2026</span>
+          </div>
+
+          <!-- Standings Table Container -->
+          <div class="flex flex-col w-full overflow-visible">
+            <!-- Table Header Row -->
+            <div class="grid grid-cols-[2rem_2.5fr_repeat(7,1fr)_1.25fr] gap-1 items-center px-2 py-2 text-xs font-bold text-gray-400 uppercase select-none border-b border-gray-100">
+              <div class="text-center">#</div>
+              <div class="text-left">Equipo</div>
+              <div class="text-center">PJ</div>
+              <div class="text-center">G</div>
+              <div class="text-center">E</div>
+              <div class="text-center">P</div>
+              <div class="text-center">GF</div>
+              <div class="text-center">GC</div>
+              <div class="text-center">DG</div>
+              <div class="text-right">Pts</div>
+            </div>
+
+            <!-- Table Body Rows -->
+            <div class="divide-y divide-gray-100/60 overflow-visible">
+              @for (team of group.teams; track team.team.id) {
+                <div class="grid grid-cols-[2rem_2.5fr_repeat(7,1fr)_1.25fr] gap-1 items-center px-2 py-3.5 text-sm relative hover:bg-gray-50/50 transition-colors duration-150 overflow-visible">
+                  <!-- Outer indicator for qualified teams (top 2) -->
+                  @if (team.rank <= 2) {
+                    <div 
+                      class="absolute -left-6 top-1 bottom-1 w-[4px] bg-emerald-500 rounded-r shadow-[0_0_8px_rgba(16,185,129,0.5)] transition-all duration-200"
+                      title="Clasificado para la siguiente fase">
+                    </div>
+                  }
+
+                  <!-- Rank -->
+                  <div class="text-center font-bold" [class]="team.rank <= 2 ? 'text-emerald-600' : 'text-gray-400'">
+                    {{ team.rank }}
+                  </div>
+
+                  <!-- Team Name & Flag -->
+                  <div class="flex items-center gap-2 text-left font-semibold text-gray-900">
+                    <span class="text-xl select-none" [attr.aria-label]="'Bandera de ' + team.team.name">{{ team.team.flag }}</span>
+                    <span class="truncate">{{ team.team.name }}</span>
+                  </div>
+
+                  <!-- Statistics -->
+                  <div class="text-center text-gray-600 font-medium">{{ team.all.played }}</div>
+                  <div class="text-center text-gray-600">{{ team.all.win }}</div>
+                  <div class="text-center text-gray-600">{{ team.all.draw }}</div>
+                  <div class="text-center text-gray-600">{{ team.all.lose }}</div>
+                  <div class="text-center text-gray-500">{{ team.all.goals.for }}</div>
+                  <div class="text-center text-gray-500">{{ team.all.goals.against }}</div>
+                  
+                  <!-- Goal Difference -->
+                  <div class="text-center font-medium" [class]="team.goalsDiff > 0 ? 'text-blue-600' : (team.goalsDiff < 0 ? 'text-red-500' : 'text-gray-500')">
+                    {{ team.goalsDiff > 0 ? '+' + team.goalsDiff : team.goalsDiff }}
+                  </div>
+
+                  <!-- Points -->
+                  <div class="text-right font-bold text-gray-950 text-base">
+                    {{ team.points }}
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Legend / Footer of Group Card -->
+        <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400 select-none">
+          <div class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            <span>Puestos de clasificación directa</span>
+          </div>
+          <div class="flex gap-1.5">
+            @for (result of ['W', 'D', 'L']; track result) {
+              <!-- Standard indicators if we need them, or empty -->
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
 </div>

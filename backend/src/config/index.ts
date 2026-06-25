@@ -9,7 +9,10 @@ const configSchema = z.object({
   MYSQL_PASSWORD: z.string(),
   MYSQL_DB: z.string(),
   COOKIE_SECRET: z.string(),
-  SECRET_KEY: z.string(),
+  JWT_ACCESS_SECRET: z.string(),
+  JWT_REFRESH_SECRET: z.string(),
+  ACCESES_TOKEN_EXPIRE: z.string(),
+  REFRESH_TOKEN_EXPIRE: z.string(),
 });
 
 const result = configSchema.safeParse(process.env);

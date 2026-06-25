@@ -5,6 +5,7 @@ import { Team } from '../entities/Team';
 import { Standing } from '../entities/Standing';
 import { Fixture } from '../entities/Fixture';
 import { User } from '../entities/User';
+import { RefreshToken } from '../entities/RefreshToken';
 
 export const AppDataSource = new DataSource({
   type: 'mysql',
@@ -15,7 +16,7 @@ export const AppDataSource = new DataSource({
   database: config.MYSQL_DB,
   synchronize: false,
   logging: config.NODE_ENV === 'development',
-  entities: [Group, Team, Standing, Fixture, User],
+  entities: [Group, Team, Standing, Fixture, User, RefreshToken],
   migrations: [__dirname + '/../migrations/*.ts', __dirname + '/../migrations/*.js'],
   subscribers: [],
 });
