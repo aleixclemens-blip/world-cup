@@ -1,16 +1,16 @@
-import { Request, Response, NextFunction } from 'express';
-import { HttpError } from '../lib/errors';
-import { logger } from './logger';
+import { Request, Response, NextFunction } from "express";
+import { HttpError } from "../lib/errors";
+import { logger } from "./logger";
 
 export function errorHandler(
   err: Error,
   req: Request,
   res: Response,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  next: NextFunction
+  next: NextFunction,
 ): void {
-  const reqId = req.headers['x-request-id'];
-  
+  const reqId = req.headers["x-request-id"];
+
   if (err instanceof HttpError) {
     logger.warn({ err, reqId }, `HTTP Error ${err.statusCode}: ${err.message}`);
     res.status(err.statusCode).json({
@@ -20,9 +20,9 @@ export function errorHandler(
     return;
   }
 
-  logger.error({ err, reqId }, 'Unhandled Internal Server Error');
+  logger.error({ err, reqId }, "Unhandled Internal Server Error");
   res.status(500).json({
-    error: 'InternalServerError',
-    message: 'An unexpected error occurred',
+    error: "InternalServerError",
+    message: "An unexpected error occurred",
   });
 }

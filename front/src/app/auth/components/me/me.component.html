@@ -1,35 +1,156 @@
-<div class="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-gray-50 py-12 px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-    <div class="text-center">
-      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gold-primary/10 text-gold-primary text-3xl font-extrabold mb-4 select-none">
+<div class="max-w-7xl mx-auto px-6 py-12">
+  
+  <!-- Profile Info Banner -->
+  <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200/80 mb-10 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex flex-col md:flex-row items-center gap-6">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gold-primary/10 text-gold-primary text-3xl font-extrabold select-none">
         {{ authService.userInitials() }}
       </div>
-      <h2 class="text-3xl font-extrabold text-gray-950 font-sans tracking-tight">Mi Perfil</h2>
-      <p class="mt-1 text-sm text-gray-500">Información de tu cuenta</p>
+      <div class="text-center md:text-left space-y-1">
+        <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Mi Perfil</h1>
+        @if (authService.currentUser(); as user) {
+          <div class="flex flex-wrap justify-center md:justify-start items-center gap-x-4 gap-y-1 text-sm text-gray-500 font-medium">
+            <span class="flex items-center gap-1">
+              <span class="material-icons text-base text-gray-400">email</span>
+              {{ user.email }}
+            </span>
+            <span class="hidden md:inline text-gray-300">•</span>
+            <span class="flex items-center gap-1">
+              <span class="material-icons text-base text-gray-400">fingerprint</span>
+              ID: <span class="font-mono">{{ user.id }}</span>
+            </span>
+          </div>
+        }
+      </div>
+    </div>
+    
+    <button
+      type="button"
+      (click)="authService.logout()"
+      class="inline-flex items-center gap-2 py-2.5 px-5 border border-gray-300 rounded-lg text-sm font-semibold text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold-primary cursor-pointer transition-all shadow-sm"
+    >
+      <span class="material-icons text-lg select-none">logout</span>
+      Cerrar sesión
+    </button>
+  </div>
+
+  <!-- Favorite Teams Section -->
+  <div class="space-y-6">
+    <div class="flex items-center gap-2 pb-2 border-b border-gray-100">
+      <span class="material-icons text-gold-primary">star</span>
+      <h2 class="text-2xl font-bold text-gray-900">Mis Selecciones Favoritas</h2>
     </div>
 
-    @if (authService.currentUser(); as user) {
-      <div class="space-y-4 border-t border-b border-gray-100 py-6">
-        <div class="flex items-center justify-between">
-          <span class="text-sm font-semibold text-gray-600">ID del Usuario</span>
-          <span class="text-sm text-gray-900 font-mono">{{ user.id }}</span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-sm font-semibold text-gray-600">Correo Electrónico</span>
-          <span class="text-sm text-gray-900 font-medium">{{ user.email }}</span>
-        </div>
+    @if (isLoading()) {
+      <!-- Skeleton Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @for (skeleton of [1, 2, 3]; track skeleton) {
+          <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm animate-pulse space-y-4">
+            <div class="flex justify-between items-center">
+              <div class="h-10 bg-gray-200 rounded w-16"></div>
+              <div class="h-8 w-8 bg-gray-200 rounded-full"></div>
+            </div>
+            <div class="h-6 bg-gray-200 rounded w-24"></div>
+            <div class="h-4 bg-gray-200 rounded w-32"></div>
+            <div class="h-10 bg-gray-200 rounded w-full"></div>
+          </div>
+        }
+      </div>
+    } @else if (error()) {
+      <div class="bg-red-50 border border-red-200 rounded-2xl p-6 text-center shadow-sm">
+        <span class="material-icons text-red-500 text-3xl mb-2">error_outline</span>
+        <p class="text-sm text-gray-700 mb-4">{{ error() }}</p>
+        <button (click)="loadFavorites()"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-red-600 hover:bg-red-700 transition-colors shadow-sm focus:outline-none cursor-pointer">
+          <span class="material-icons text-sm">replay</span>
+          Reintentar
+        </button>
+      </div>
+    } @else if (favoriteTeams().length === 0) {
+      <div class="bg-white/80 border border-gray-200/80 rounded-2xl p-12 text-center shadow-sm">
+        <span class="material-icons text-gray-300 text-5xl mb-3">star_outline</span>
+        <h3 class="text-lg font-bold text-gray-800 mb-1">Sin favoritos</h3>
+        <p class="text-sm text-gray-505 mb-6 max-w-sm mx-auto">Aún no has marcado ninguna selección como favorita. Explora la lista de equipos y añade los que más te gusten.</p>
+        <a routerLink="/teams"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gold-primary hover:bg-gold-hover transition-colors shadow-sm cursor-pointer">
+          <span class="material-icons text-sm">explore</span>
+          Ver Equipos
+        </a>
+      </div>
+    } @else {
+      <!-- Favorite Teams Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @for (team of favoriteTeams(); track team.id) {
+          <div class="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow relative">
+            <div class="flex justify-between items-start mb-4">
+              <!-- Flag -->
+              <div>
+                @if (team.flag !== 'unknown') {
+                  <img [src]="'https://flagcdn.com/w80/' + team.flag + '.png'" [alt]="'Bandera de ' + team.name"
+                    class="w-12 h-auto rounded border border-gray-100 shadow-sm select-none" />
+                } @else {
+                  <span class="text-3xl select-none" [attr.aria-label]="'Bandera de ' + team.name">🏳️</span>
+                }
+              </div>
+              <!-- Unfavorite Button -->
+              <button
+                type="button"
+                (click)="toggleFavorite(team)"
+                [disabled]="team.isFavoriteLoading"
+                class="flex items-center justify-center p-1.5 rounded-full hover:bg-red-50 text-gold-primary hover:text-red-500 disabled:opacity-50 disabled:hover:bg-transparent transition-colors cursor-pointer"
+                [attr.aria-label]="'Quitar de favoritos'"
+              >
+                @if (team.isFavoriteLoading) {
+                  <svg class="animate-spin h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                } @else {
+                  <span class="material-icons text-2xl select-none text-gold-primary">star</span>
+                }
+              </button>
+            </div>
+
+            <!-- Team Info -->
+            <div class="mb-4">
+              <h3 class="text-xl font-bold text-gray-900">{{ team.name }}</h3>
+              <p class="text-xs text-gray-400 font-medium">Fundación: {{ team.founded }} • {{ team.group.name }}</p>
+            </div>
+
+            <!-- Stadium -->
+            <div class="flex items-center gap-3 bg-gray-50/80 p-3 rounded-xl border border-gray-100 mb-4">
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gold-light text-gold-hover border border-gold-primary/20">
+                <span class="material-icons text-lg select-none">stadium</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-semibold text-gray-800 leading-tight">{{ team.mainStadium }}</span>
+                <span class="text-xs text-gray-505 font-medium">{{ team.mainStadiumCity }}</span>
+              </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="flex flex-col gap-1.5 pt-2 border-t border-gray-100">
+              @if (team.worldCupsWon > 0 || team.continentCupsWon > 0) {
+                @if (team.worldCupsWon > 0) {
+                  <div class="flex items-center gap-1.5 text-xs text-gray-700 font-medium">
+                    <span class="material-icons text-amber-500 text-base select-none">emoji_events</span>
+                    <span>{{ team.worldCupsWon }} Mundial{{ team.worldCupsWon > 1 ? 'es' : '' }}</span>
+                  </div>
+                }
+                @if (team.continentCupsWon > 0) {
+                  <div class="flex items-center gap-1.5 text-xs text-gray-700 font-medium">
+                    <span class="material-icons text-slate-400 text-base select-none">military_tech</span>
+                    <span>{{ team.continentCupsWon }} {{ team.continentCupName }}{{ team.continentCupsWon > 1 ? 's' : '' }}</span>
+                  </div>
+                }
+              } @else {
+                <span class="text-xs text-gray-400 font-normal italic select-none">Sin títulos oficiales</span>
+              }
+            </div>
+          </div>
+        }
       </div>
     }
-
-    <div class="pt-2">
-      <button
-        type="button"
-        (click)="authService.logout()"
-        class="w-full flex justify-center items-center gap-2 py-2.5 px-4 border border-gray-300 rounded-lg text-sm font-semibold text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold-primary cursor-pointer transition-all shadow-sm"
-      >
-        <span class="material-icons text-lg select-none">logout</span>
-        Cerrar sesión
-      </button>
-    </div>
   </div>
+
 </div>

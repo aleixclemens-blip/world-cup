@@ -5,10 +5,7 @@ import { Observable, tap } from 'rxjs';
 
 import { API_URL } from '../../core/api.config';
 
-export interface User {
-  id: number;
-  email: string;
-}
+import { User } from '../types/auth.types';
 
 @Service()
 export class AuthService {

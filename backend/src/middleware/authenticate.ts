@@ -1,18 +1,22 @@
-import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
-import { config } from '../config';
-import { UnauthorizedError } from '../lib/errors';
+import { Request, Response, NextFunction } from "express";
+import jwt from "jsonwebtoken";
+import { config } from "../config";
+import { UnauthorizedError } from "../lib/errors";
 
 interface DecodedToken {
   userId: number;
   email: string;
 }
 
-export function authenticate(req: Request, res: Response, next: NextFunction): void {
+export function authenticate(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): void {
   const token = req.cookies.accessToken as string | undefined;
 
   if (!token) {
-    throw new UnauthorizedError('Authentication token is missing');
+    throw new UnauthorizedError("Authentication token is missing");
   }
 
   try {
@@ -23,6 +27,6 @@ export function authenticate(req: Request, res: Response, next: NextFunction): v
     };
     next();
   } catch {
-    throw new UnauthorizedError('Invalid or expired authentication token');
+    throw new UnauthorizedError("Invalid or expired authentication token");
   }
 }

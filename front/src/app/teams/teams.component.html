@@ -1,0 +1,194 @@
+<div class="max-w-7xl mx-auto px-6 py-12">
+  <!-- Page Header -->
+  <div class="text-center mb-12">
+    <span
+      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-gold-light text-gold-hover border border-gold-primary/20 mb-4 uppercase tracking-wider select-none">
+      <span class="material-icons text-sm">flag</span>
+      Selecciones Participantes
+    </span>
+    <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+      Equipos del Torneo
+    </h1>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+      Explora las selecciones nacionales que compiten en el torneo, sus sedes oficiales y su palmarés histórico.
+    </p>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="mb-6 max-w-md mx-auto sm:mx-0">
+    <div class="relative">
+      <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
+        <span class="material-icons select-none">search</span>
+      </span>
+      <input
+        type="text"
+        [value]="searchQuery()"
+        (input)="onSearchChange($event)"
+        placeholder="Buscar selecciones por nombre..."
+        class="w-full pl-10 pr-10 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold-primary/20 focus:border-gold-primary transition-all shadow-sm placeholder-gray-400 text-gray-900"
+      />
+      @if (searchQuery()) {
+        <button
+          type="button"
+          (click)="clearSearch()"
+          class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
+          aria-label="Limpiar búsqueda"
+        >
+          <span class="material-icons select-none">close</span>
+        </button>
+      }
+    </div>
+  </div>
+
+  @if (isLoading()) {
+  <!-- Loading Skeleton -->
+  <div class="bg-white/80 backdrop-blur-md border border-gray-200/80 shadow-sm rounded-2xl p-6 animate-pulse">
+    <div class="space-y-4">
+      <!-- Table Header Skeleton -->
+      <div class="grid grid-cols-[4rem_1.5fr_2fr_1.5fr_1fr_4rem] gap-4 items-center px-4 py-2 border-b border-gray-100">
+        @for (header of [1, 2, 3, 4, 5, 6]; track header) {
+        <div class="h-4 bg-gray-200 rounded w-20"></div>
+        }
+      </div>
+      <!-- Rows Skeleton -->
+      @for (row of [1, 2, 3, 4, 5]; track row) {
+      <div class="grid grid-cols-[4rem_1.5fr_2fr_1.5fr_1fr_4rem] gap-4 items-center px-4 py-5 border-b border-gray-100/60">
+        <div class="h-6 bg-gray-200 rounded-md w-8"></div>
+        <div class="h-5 bg-gray-200 rounded w-28"></div>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-gray-200"></div>
+          <div class="space-y-2">
+            <div class="h-4 bg-gray-200 rounded w-32"></div>
+            <div class="h-3 bg-gray-200 rounded w-20"></div>
+          </div>
+        </div>
+        <div class="h-5 bg-gray-200 rounded w-32"></div>
+        <div class="h-6 bg-gray-200 rounded-full w-20"></div>
+        <div class="h-6 bg-gray-200 rounded-full w-8 mx-auto"></div>
+      </div>
+      }
+    </div>
+  </div>
+  } @else if (error()) {
+  <!-- Error Message -->
+  <div class="max-w-md mx-auto mt-8 bg-red-50 border border-red-200 rounded-2xl p-6 text-center shadow-sm">
+    <span class="material-icons text-red-500 text-5xl mb-3">error_outline</span>
+    <h3 class="text-lg font-bold text-gray-900 mb-2">Error de conexión</h3>
+    <p class="text-sm text-gray-600 mb-6">{{ error() }}</p>
+    <button (click)="loadTeams()"
+      class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-red-600 hover:bg-red-700 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+      <span class="material-icons text-sm">replay</span>
+      Reintentar
+    </button>
+  </div>
+  } @else {
+  <!-- Premium Teams Table/List -->
+  <div class="bg-white/80 backdrop-blur-md border border-gray-200/80 shadow-sm rounded-2xl overflow-hidden">
+    <div class="flex flex-col w-full">
+      <!-- Table Header -->
+      <div
+        class="grid grid-cols-[4rem_1.5fr_2fr_1.5fr_1fr_4rem] gap-4 items-center px-6 py-4 text-xs font-bold text-gray-400 uppercase select-none border-b border-gray-100 bg-gray-50/50">
+        <div class="text-center">Bandera</div>
+        <div>Equipo</div>
+        <div>Estadio</div>
+        <div>Logros / Palmarés</div>
+        <div class="text-center">Grupo</div>
+        <div class="text-center">Favorito</div>
+      </div>
+ 
+      <!-- Table Body -->
+      <div class="divide-y divide-gray-100">
+        @for (team of teams(); track team.id) {
+        <div
+          class="grid grid-cols-[4rem_1.5fr_2fr_1.5fr_1fr_4rem] gap-4 items-center px-6 py-5 text-sm hover:bg-gray-50/50 transition-colors duration-150">
+          
+          <!-- Flag Column -->
+          <div class="flex justify-center">
+            @if (team.flag !== 'unknown') {
+            <img [src]="'https://flagcdn.com/w80/' + team.flag + '.png'" [alt]="'Bandera de ' + team.name"
+              class="w-12 h-auto rounded border border-gray-200/80 shadow-sm select-none" />
+            } @else {
+            <span class="text-2xl select-none" [attr.aria-label]="'Bandera de ' + team.name">🏳️</span>
+            }
+          </div>
+ 
+          <!-- Team Name Column -->
+          <div class="font-bold text-gray-900 text-base">
+            {{ team.name }}
+          </div>
+ 
+          <!-- Stadium Column (stadium icon + stadium name above city) -->
+          <div class="flex items-center gap-3">
+            <div class="flex items-center justify-center w-9 h-9 rounded-lg bg-gold-light text-gold-hover border border-gold-primary/20">
+              <span class="material-icons text-xl select-none">stadium</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-semibold text-gray-800 leading-tight">{{ team.mainStadium }}</span>
+              <span class="text-xs text-gray-505 font-medium">{{ team.mainStadiumCity }}</span>
+            </div>
+          </div>
+ 
+          <!-- Achievements Column -->
+          <div class="flex flex-col gap-1.5">
+            @if (team.worldCupsWon > 0 || team.continentCupsWon > 0) {
+              @if (team.worldCupsWon > 0) {
+              <div class="flex items-center gap-1.5 text-xs text-gray-700 font-medium">
+                <span class="material-icons text-amber-500 text-base select-none">emoji_events</span>
+                <span>{{ team.worldCupsWon }} Mundial{{ team.worldCupsWon > 1 ? 'es' : '' }}</span>
+              </div>
+              }
+              @if (team.continentCupsWon > 0) {
+              <div class="flex items-center gap-1.5 text-xs text-gray-700 font-medium">
+                <span class="material-icons text-slate-400 text-base select-none">military_tech</span>
+                <span>{{ team.continentCupsWon }} {{ team.continentCupName }}{{ team.continentCupsWon > 1 ? 's' : '' }}</span>
+              </div>
+              }
+            } @else {
+              <span class="text-xs text-gray-400 font-normal italic select-none">Sin títulos oficiales</span>
+            }
+          </div>
+ 
+          <!-- Group Column -->
+          <div class="flex justify-center">
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-800 border border-gray-200 select-none">
+              {{ team.group.name }}
+            </span>
+          </div>
+
+          <!-- Favorite Column -->
+          <div class="flex justify-center">
+            <button
+              type="button"
+              (click)="toggleFavorite(team)"
+              [disabled]="team.isFavoriteLoading"
+              class="flex items-center justify-center p-1.5 rounded-full hover:bg-gray-100/80 text-gray-400 hover:text-gold-primary disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-gray-400 transition-colors cursor-pointer"
+              [class.text-gold-primary]="team.isFavorite"
+              [attr.aria-label]="team.isFavorite ? 'Quitar de favoritos' : 'Añadir a favoritos'"
+            >
+              @if (team.isFavoriteLoading) {
+                <svg class="animate-spin h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              } @else {
+                <span class="material-icons text-2xl select-none">
+                  {{ team.isFavorite ? 'star' : 'star_border' }}
+                </span>
+              }
+            </button>
+          </div>
+ 
+        </div>
+        } @empty {
+        <div class="flex flex-col items-center justify-center py-16 text-center text-gray-500">
+          <span class="material-icons text-5xl mb-3 text-gray-300 select-none">search_off</span>
+          <p class="text-base font-semibold text-gray-700">No se encontraron selecciones</p>
+          <p class="text-sm text-gray-400 mt-1">Prueba a buscar otro término o limpia el filtro.</p>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+  }
+</div>
