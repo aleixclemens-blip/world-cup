@@ -1,0 +1,432 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "855754"
+  },
+  "errors": [],
+  "results": 19,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": 2,
+        "extra": null
+      },
+      "team": {
+        "id": 5529,
+        "name": "Canada",
+        "logo": "https://media.api-sports.io/football/teams/5529.png"
+      },
+      "player": {
+        "id": 509,
+        "name": "A. Davies"
+      },
+      "assist": {
+        "id": 51016,
+        "name": "T. Buchanan"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 36,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 726,
+        "name": "A. Kramarić"
+      },
+      "assist": {
+        "id": 207,
+        "name": "I. Perišić"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 44,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 611,
+        "name": "M. Livaja"
+      },
+      "assist": {
+        "id": 14330,
+        "name": "J. Juranović"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 5529,
+        "name": "Canada",
+        "logo": "https://media.api-sports.io/football/teams/5529.png"
+      },
+      "player": {
+        "id": 2001,
+        "name": "C. Larin"
+      },
+      "assist": {
+        "id": 50817,
+        "name": "J. Osorio"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 5529,
+        "name": "Canada",
+        "logo": "https://media.api-sports.io/football/teams/5529.png"
+      },
+      "player": {
+        "id": 35570,
+        "name": "S. Eustáquio"
+      },
+      "assist": {
+        "id": 328046,
+        "name": "I. Koné"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 52,
+        "extra": null
+      },
+      "team": {
+        "id": 5529,
+        "name": "Canada",
+        "logo": "https://media.api-sports.io/football/teams/5529.png"
+      },
+      "player": {
+        "id": 51016,
+        "name": "Tajon Buchanan"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 56,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 287,
+        "name": "Dejan Lovren"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Off the ball foul"
+    },
+    {
+      "time": {
+        "elapsed": 60,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 611,
+        "name": "M. Livaja"
+      },
+      "assist": {
+        "id": 1331,
+        "name": "B. Petković"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 62,
+        "extra": null
+      },
+      "team": {
+        "id": 5529,
+        "name": "Canada",
+        "logo": "https://media.api-sports.io/football/teams/5529.png"
+      },
+      "player": {
+        "id": 50816,
+        "name": "R. Laryea"
+      },
+      "assist": {
+        "id": 19007,
+        "name": "J. Hoilett"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 70,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 726,
+        "name": "A. Kramarić"
+      },
+      "assist": {
+        "id": 207,
+        "name": "I. Perišić"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 72,
+        "extra": null
+      },
+      "team": {
+        "id": 5529,
+        "name": "Canada",
+        "logo": "https://media.api-sports.io/football/teams/5529.png"
+      },
+      "player": {
+        "id": 8489,
+        "name": "J. David"
+      },
+      "assist": {
+        "id": 35766,
+        "name": "L. Cavallini"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 73,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 726,
+        "name": "A. Kramarić"
+      },
+      "assist": {
+        "id": 842,
+        "name": "N. Vlašić"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 73,
+        "extra": null
+      },
+      "team": {
+        "id": 5529,
+        "name": "Canada",
+        "logo": "https://media.api-sports.io/football/teams/5529.png"
+      },
+      "player": {
+        "id": 1990,
+        "name": "A. Hutchinson"
+      },
+      "assist": {
+        "id": 39107,
+        "name": "S. Adekugbe"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 85,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 754,
+        "name": "Luka Modrić"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 85,
+        "extra": null
+      },
+      "team": {
+        "id": 5529,
+        "name": "Canada",
+        "logo": "https://media.api-sports.io/football/teams/5529.png"
+      },
+      "player": {
+        "id": 50925,
+        "name": "Kamal Miller"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 86,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 754,
+        "name": "L. Modrić"
+      },
+      "assist": {
+        "id": 2763,
+        "name": "M. Pašalić"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 86,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 2291,
+        "name": "M. Kovačić"
+      },
+      "assist": {
+        "id": 1321,
+        "name": "L. Majer"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 86,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 207,
+        "name": "I. Perišić"
+      },
+      "assist": {
+        "id": 1330,
+        "name": "M. Oršić"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 90,
+        "extra": 4
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 1321,
+        "name": "L. Majer"
+      },
+      "assist": {
+        "id": 1330,
+        "name": "M. Oršić"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    }
+  ]
+}

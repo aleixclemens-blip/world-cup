@@ -1,0 +1,476 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "855756"
+  },
+  "errors": [],
+  "results": 21,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": -5,
+        "extra": null
+      },
+      "team": {
+        "id": 1530,
+        "name": "Cameroon",
+        "logo": "https://media.api-sports.io/football/teams/1530.png"
+      },
+      "player": {
+        "id": 3408,
+        "name": "Christian Bassogog"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": -5,
+        "extra": null
+      },
+      "team": {
+        "id": 14,
+        "name": "Serbia",
+        "logo": "https://media.api-sports.io/football/teams/14.png"
+      },
+      "player": {
+        "id": 1828,
+        "name": "Luka Jović"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 24,
+        "extra": null
+      },
+      "team": {
+        "id": 1530,
+        "name": "Cameroon",
+        "logo": "https://media.api-sports.io/football/teams/1530.png"
+      },
+      "player": {
+        "id": 30503,
+        "name": "Nicolas N'Koulou"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 29,
+        "extra": null
+      },
+      "team": {
+        "id": 1530,
+        "name": "Cameroon",
+        "logo": "https://media.api-sports.io/football/teams/1530.png"
+      },
+      "player": {
+        "id": 20545,
+        "name": "J. Castelletto"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 45,
+        "extra": 1
+      },
+      "team": {
+        "id": 14,
+        "name": "Serbia",
+        "logo": "https://media.api-sports.io/football/teams/14.png"
+      },
+      "player": {
+        "id": 45826,
+        "name": "S. Pavlović"
+      },
+      "assist": {
+        "id": 554,
+        "name": "D. Tadić"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 45,
+        "extra": 3
+      },
+      "team": {
+        "id": 14,
+        "name": "Serbia",
+        "logo": "https://media.api-sports.io/football/teams/14.png"
+      },
+      "player": {
+        "id": 1856,
+        "name": "S. Milinković-Savić"
+      },
+      "assist": {
+        "id": 579,
+        "name": "A. Živković"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 53,
+        "extra": null
+      },
+      "team": {
+        "id": 14,
+        "name": "Serbia",
+        "logo": "https://media.api-sports.io/football/teams/14.png"
+      },
+      "player": {
+        "id": 2825,
+        "name": "A. Mitrović"
+      },
+      "assist": {
+        "id": 579,
+        "name": "A. Živković"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 55,
+        "extra": null
+      },
+      "team": {
+        "id": 1530,
+        "name": "Cameroon",
+        "logo": "https://media.api-sports.io/football/teams/1530.png"
+      },
+      "player": {
+        "id": 63542,
+        "name": "M. Hongla"
+      },
+      "assist": {
+        "id": 386,
+        "name": "V. Aboubakar"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 56,
+        "extra": null
+      },
+      "team": {
+        "id": 14,
+        "name": "Serbia",
+        "logo": "https://media.api-sports.io/football/teams/14.png"
+      },
+      "player": {
+        "id": 45826,
+        "name": "S. Pavlović"
+      },
+      "assist": {
+        "id": 2819,
+        "name": "S. Mitrović"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 63,
+        "extra": null
+      },
+      "team": {
+        "id": 1530,
+        "name": "Cameroon",
+        "logo": "https://media.api-sports.io/football/teams/1530.png"
+      },
+      "player": {
+        "id": 386,
+        "name": "V. Aboubakar"
+      },
+      "assist": {
+        "id": 20545,
+        "name": "J. Castelletto"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 64,
+        "extra": null
+      },
+      "team": {
+        "id": 1530,
+        "name": "Cameroon",
+        "logo": "https://media.api-sports.io/football/teams/1530.png"
+      },
+      "player": {
+        "id": 386,
+        "name": "Vincent Aboubakar"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Var",
+      "detail": "Goal confirmed",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 66,
+        "extra": null
+      },
+      "team": {
+        "id": 1530,
+        "name": "Cameroon",
+        "logo": "https://media.api-sports.io/football/teams/1530.png"
+      },
+      "player": {
+        "id": 275,
+        "name": "E. Choupo-Moting"
+      },
+      "assist": {
+        "id": 386,
+        "name": "V. Aboubakar"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 67,
+        "extra": null
+      },
+      "team": {
+        "id": 1530,
+        "name": "Cameroon",
+        "logo": "https://media.api-sports.io/football/teams/1530.png"
+      },
+      "player": {
+        "id": 1709,
+        "name": "K. Toko Ekambi"
+      },
+      "assist": {
+        "id": 3408,
+        "name": "C. Bassogog"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 67,
+        "extra": null
+      },
+      "team": {
+        "id": 1530,
+        "name": "Cameroon",
+        "logo": "https://media.api-sports.io/football/teams/1530.png"
+      },
+      "player": {
+        "id": 3403,
+        "name": "P. Kunde"
+      },
+      "assist": {
+        "id": 53740,
+        "name": "G. Ondoua"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 78,
+        "extra": null
+      },
+      "team": {
+        "id": 14,
+        "name": "Serbia",
+        "logo": "https://media.api-sports.io/football/teams/14.png"
+      },
+      "player": {
+        "id": 579,
+        "name": "A. Živković"
+      },
+      "assist": {
+        "id": 1920,
+        "name": "N. Radonjić"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 78,
+        "extra": null
+      },
+      "team": {
+        "id": 14,
+        "name": "Serbia",
+        "logo": "https://media.api-sports.io/football/teams/14.png"
+      },
+      "player": {
+        "id": 2821,
+        "name": "M. Veljković"
+      },
+      "assist": {
+        "id": 340,
+        "name": "S. Babić"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 79,
+        "extra": null
+      },
+      "team": {
+        "id": 14,
+        "name": "Serbia",
+        "logo": "https://media.api-sports.io/football/teams/14.png"
+      },
+      "player": {
+        "id": 1856,
+        "name": "S. Milinković-Savić"
+      },
+      "assist": {
+        "id": 25350,
+        "name": "M. Grujić"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 81,
+        "extra": null
+      },
+      "team": {
+        "id": 1530,
+        "name": "Cameroon",
+        "logo": "https://media.api-sports.io/football/teams/1530.png"
+      },
+      "player": {
+        "id": 3406,
+        "name": "A. Zambo Anguissa"
+      },
+      "assist": {
+        "id": 7689,
+        "name": "S. Oum Gouet"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 81,
+        "extra": null
+      },
+      "team": {
+        "id": 1530,
+        "name": "Cameroon",
+        "logo": "https://media.api-sports.io/football/teams/1530.png"
+      },
+      "player": {
+        "id": 20589,
+        "name": "B. Mbeumo"
+      },
+      "assist": {
+        "id": 113,
+        "name": "G. Nkoudou"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 90,
+        "extra": 3
+      },
+      "team": {
+        "id": 14,
+        "name": "Serbia",
+        "logo": "https://media.api-sports.io/football/teams/14.png"
+      },
+      "player": {
+        "id": 2817,
+        "name": "Nikola Milenković"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 90,
+        "extra": 2
+      },
+      "team": {
+        "id": 14,
+        "name": "Serbia",
+        "logo": "https://media.api-sports.io/football/teams/14.png"
+      },
+      "player": {
+        "id": 1821,
+        "name": "F. Kostić"
+      },
+      "assist": {
+        "id": 30536,
+        "name": "F. Đuričić"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    }
+  ]
+}

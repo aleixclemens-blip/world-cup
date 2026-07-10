@@ -1,0 +1,520 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "977344"
+  },
+  "errors": [],
+  "results": 23,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": 43,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 33224,
+        "name": "D. Maeda"
+      },
+      "assist": {
+        "id": 18944,
+        "name": "M. Yoshida"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 55,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 207,
+        "name": "I. Perišić"
+      },
+      "assist": {
+        "id": 287,
+        "name": "D. Lovren"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 62,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 1331,
+        "name": "B. Petković"
+      },
+      "assist": {
+        "id": 46746,
+        "name": "A. Budimir"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 64,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 440,
+        "name": "Y. Nagatomo"
+      },
+      "assist": {
+        "id": 106835,
+        "name": "K. Mitoma"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 64,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 33224,
+        "name": "D. Maeda"
+      },
+      "assist": {
+        "id": 25375,
+        "name": "T. Asano"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 68,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 726,
+        "name": "A. Kramarić"
+      },
+      "assist": {
+        "id": 2763,
+        "name": "M. Pašalić"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 75,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 2601,
+        "name": "D. Kamada"
+      },
+      "assist": {
+        "id": 1907,
+        "name": "H. Sakai"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 87,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 2598,
+        "name": "R. Dōan"
+      },
+      "assist": {
+        "id": 1101,
+        "name": "T. Minamino"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 90,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 2291,
+        "name": "Mateo Kovačić"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 99,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 754,
+        "name": "L. Modrić"
+      },
+      "assist": {
+        "id": 1321,
+        "name": "L. Majer"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 99,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 2291,
+        "name": "M. Kovačić"
+      },
+      "assist": {
+        "id": 842,
+        "name": "N. Vlašić"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 105,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 32960,
+        "name": "H. Morita"
+      },
+      "assist": {
+        "id": 32966,
+        "name": "A. Tanaka"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 105,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 207,
+        "name": "I. Perišić"
+      },
+      "assist": {
+        "id": 1330,
+        "name": "M. Oršić"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 105,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 46746,
+        "name": "A. Budimir"
+      },
+      "assist": {
+        "id": 611,
+        "name": "M. Livaja"
+      },
+      "type": "subst",
+      "detail": "Substitution 6",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 116,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 1738,
+        "name": "Borna Barišić"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 1
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 1101,
+        "name": "T. Minamino"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Missed Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 2
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 842,
+        "name": "N. Vlašić"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 3
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 106835,
+        "name": "K. Mitoma"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Missed Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 4
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 201,
+        "name": "M. Brozović"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 5
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 25375,
+        "name": "T. Asano"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 6
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 611,
+        "name": "M. Livaja"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Missed Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 7
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 18944,
+        "name": "M. Yoshida"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Missed Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 8
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 2763,
+        "name": "M. Pašalić"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    }
+  ]
+}

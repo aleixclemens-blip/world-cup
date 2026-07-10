@@ -1,0 +1,322 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "855741"
+  },
+  "errors": [],
+  "results": 14,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": 33,
+        "extra": null
+      },
+      "team": {
+        "id": 25,
+        "name": "Germany",
+        "logo": "https://media.api-sports.io/football/teams/25.png"
+      },
+      "player": {
+        "id": 633,
+        "name": "İ. Gündoğan"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 45,
+        "extra": 5
+      },
+      "team": {
+        "id": 25,
+        "name": "Germany",
+        "logo": "https://media.api-sports.io/football/teams/25.png"
+      },
+      "player": {
+        "id": 978,
+        "name": "Kai Havertz"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Var",
+      "detail": "Goal cancelled",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 32862,
+        "name": "T. Kubo"
+      },
+      "assist": {
+        "id": 2597,
+        "name": "T. Tomiyasu"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 57,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 33224,
+        "name": "D. Maeda"
+      },
+      "assist": {
+        "id": 25375,
+        "name": "T. Asano"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 57,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 440,
+        "name": "Y. Nagatomo"
+      },
+      "assist": {
+        "id": 106835,
+        "name": "K. Mitoma"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 67,
+        "extra": null
+      },
+      "team": {
+        "id": 25,
+        "name": "Germany",
+        "logo": "https://media.api-sports.io/football/teams/25.png"
+      },
+      "player": {
+        "id": 522,
+        "name": "T. Müller"
+      },
+      "assist": {
+        "id": 25635,
+        "name": "J. Hofmann"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 67,
+        "extra": null
+      },
+      "team": {
+        "id": 25,
+        "name": "Germany",
+        "logo": "https://media.api-sports.io/football/teams/25.png"
+      },
+      "player": {
+        "id": 633,
+        "name": "İ. Gündoğan"
+      },
+      "assist": {
+        "id": 511,
+        "name": "L. Goretzka"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 71,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 32966,
+        "name": "A. Tanaka"
+      },
+      "assist": {
+        "id": 2598,
+        "name": "R. Dōan"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 74,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 1907,
+        "name": "H. Sakai"
+      },
+      "assist": {
+        "id": 1101,
+        "name": "T. Minamino"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 75,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 2598,
+        "name": "R. Dōan"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 79,
+        "extra": null
+      },
+      "team": {
+        "id": 25,
+        "name": "Germany",
+        "logo": "https://media.api-sports.io/football/teams/25.png"
+      },
+      "player": {
+        "id": 978,
+        "name": "K. Havertz"
+      },
+      "assist": {
+        "id": 25391,
+        "name": "N. Füllkrug"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 79,
+        "extra": null
+      },
+      "team": {
+        "id": 25,
+        "name": "Germany",
+        "logo": "https://media.api-sports.io/football/teams/25.png"
+      },
+      "player": {
+        "id": 181812,
+        "name": "J. Musiala"
+      },
+      "assist": {
+        "id": 16,
+        "name": "M. Götze"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 83,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 25375,
+        "name": "T. Asano"
+      },
+      "assist": {
+        "id": 38114,
+        "name": "K. Itakura"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 90,
+        "extra": null
+      },
+      "team": {
+        "id": 25,
+        "name": "Germany",
+        "logo": "https://media.api-sports.io/football/teams/25.png"
+      },
+      "player": {
+        "id": 510,
+        "name": "S. Gnabry"
+      },
+      "assist": {
+        "id": 161919,
+        "name": "Y. Moukoko"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    }
+  ]
+}

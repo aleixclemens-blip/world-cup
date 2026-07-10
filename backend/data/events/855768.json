@@ -1,0 +1,388 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "855768"
+  },
+  "errors": [],
+  "results": 17,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": 11,
+        "extra": null
+      },
+      "team": {
+        "id": 9,
+        "name": "Spain",
+        "logo": "https://media.api-sports.io/football/teams/9.png"
+      },
+      "player": {
+        "id": 59,
+        "name": "Álvaro Morata"
+      },
+      "assist": {
+        "id": 2280,
+        "name": "César Azpilicueta"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 39,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 38114,
+        "name": "Ko Itakura"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 44,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 32954,
+        "name": "Shogo Taniguchi"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 45,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 18944,
+        "name": "Maya Yoshida"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 440,
+        "name": "Y. Nagatomo"
+      },
+      "assist": {
+        "id": 106835,
+        "name": "K. Mitoma"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 32862,
+        "name": "T. Kubo"
+      },
+      "assist": {
+        "id": 2598,
+        "name": "R. Dōan"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 9,
+        "name": "Spain",
+        "logo": "https://media.api-sports.io/football/teams/9.png"
+      },
+      "player": {
+        "id": 2280,
+        "name": "César Azpilicueta"
+      },
+      "assist": {
+        "id": 733,
+        "name": "Dani Carvajal"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 48,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 2598,
+        "name": "R. Dōan"
+      },
+      "assist": {
+        "id": 1942,
+        "name": "J. Ito"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 51,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 32966,
+        "name": "A. Tanaka"
+      },
+      "assist": {
+        "id": 106835,
+        "name": "K. Mitoma"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 52,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 32966,
+        "name": "Ao Tanaka"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Var",
+      "detail": "Goal confirmed",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 57,
+        "extra": null
+      },
+      "team": {
+        "id": 9,
+        "name": "Spain",
+        "logo": "https://media.api-sports.io/football/teams/9.png"
+      },
+      "player": {
+        "id": 183799,
+        "name": "Nico Williams"
+      },
+      "assist": {
+        "id": 931,
+        "name": "Ferran Torres"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 57,
+        "extra": null
+      },
+      "team": {
+        "id": 9,
+        "name": "Spain",
+        "logo": "https://media.api-sports.io/football/teams/9.png"
+      },
+      "player": {
+        "id": 59,
+        "name": "Álvaro Morata"
+      },
+      "assist": {
+        "id": 746,
+        "name": "Marco Asensio"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 62,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 33224,
+        "name": "D. Maeda"
+      },
+      "assist": {
+        "id": 25375,
+        "name": "T. Asano"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 68,
+        "extra": null
+      },
+      "team": {
+        "id": 9,
+        "name": "Spain",
+        "logo": "https://media.api-sports.io/football/teams/9.png"
+      },
+      "player": {
+        "id": 296667,
+        "name": "Gavi"
+      },
+      "assist": {
+        "id": 135775,
+        "name": "Ansu Fati"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 68,
+        "extra": null
+      },
+      "team": {
+        "id": 9,
+        "name": "Spain",
+        "logo": "https://media.api-sports.io/football/teams/9.png"
+      },
+      "player": {
+        "id": 161928,
+        "name": "Alejandro Balde"
+      },
+      "assist": {
+        "id": 128,
+        "name": "Jordi Alba"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 69,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 2601,
+        "name": "D. Kamada"
+      },
+      "assist": {
+        "id": 2597,
+        "name": "T. Tomiyasu"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 87,
+        "extra": null
+      },
+      "team": {
+        "id": 12,
+        "name": "Japan",
+        "logo": "https://media.api-sports.io/football/teams/12.png"
+      },
+      "player": {
+        "id": 32966,
+        "name": "A. Tanaka"
+      },
+      "assist": {
+        "id": 8500,
+        "name": "W. Endo"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    }
+  ]
+}

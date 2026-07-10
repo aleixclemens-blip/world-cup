@@ -1,0 +1,938 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "977794"
+  },
+  "errors": [],
+  "results": 42,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": -5,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 244,
+        "name": "Steven Bergwijn"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": -5,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 25416,
+        "name": "Wout Weghorst"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 35,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 6503,
+        "name": "N. Molina"
+      },
+      "assist": {
+        "id": 154,
+        "name": "L. Messi"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 43,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 38746,
+        "name": "Jurriën Timber"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 43,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 1493,
+        "name": "Marcos Acuña"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 45,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 30776,
+        "name": "Cristian Romero"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Handball"
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 244,
+        "name": "S. Bergwijn"
+      },
+      "assist": {
+        "id": 37160,
+        "name": "S. Berghuis"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 30432,
+        "name": "M. de Roon"
+      },
+      "assist": {
+        "id": 36899,
+        "name": "T. Koopmeiners"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 64,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 531,
+        "name": "D. Blind"
+      },
+      "assist": {
+        "id": 246,
+        "name": "L. de Jong"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 66,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 2472,
+        "name": "R. De Paul"
+      },
+      "assist": {
+        "id": 271,
+        "name": "L. Paredes"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 73,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 154,
+        "name": "L. Messi"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 76,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 667,
+        "name": "Memphis Depay"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 76,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 2467,
+        "name": "Lisandro Martínez"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 78,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 667,
+        "name": "M. Depay"
+      },
+      "assist": {
+        "id": 25416,
+        "name": "W. Weghorst"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 78,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 30776,
+        "name": "C. Romero"
+      },
+      "assist": {
+        "id": 2469,
+        "name": "G. Pezzella"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 78,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 1493,
+        "name": "M. Acuña"
+      },
+      "assist": {
+        "id": 529,
+        "name": "N. Tagliafico"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 82,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 6009,
+        "name": "J. Álvarez"
+      },
+      "assist": {
+        "id": 217,
+        "name": "Lautaro Martínez"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 83,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 25416,
+        "name": "W. Weghorst"
+      },
+      "assist": {
+        "id": 37160,
+        "name": "S. Berghuis"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 88,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 37160,
+        "name": "Steven Berghuis"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 89,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 271,
+        "name": "Leandro Paredes"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 90,
+        "extra": 11
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 25416,
+        "name": "W. Weghorst                                  1"
+      },
+      "assist": {
+        "id": 36899,
+        "name": "T. Koopmeiners"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 90,
+        "extra": 11
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 624,
+        "name": "Nicolás Otamendi"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 90,
+        "extra": 10
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 154,
+        "name": "Lionel Messi"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 105,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 6503,
+        "name": "N. Molina"
+      },
+      "assist": {
+        "id": 2468,
+        "name": "G. Montiel"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 109,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 2468,
+        "name": "Gonzalo Montiel"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 112,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 2469,
+        "name": "Germán Pezzella"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 112,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 2467,
+        "name": "Lisandro Martínez"
+      },
+      "assist": {
+        "id": 266,
+        "name": "Á. Di María"
+      },
+      "type": "subst",
+      "detail": "Substitution 6",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 113,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 247,
+        "name": "C. Gakpo"
+      },
+      "assist": {
+        "id": 544,
+        "name": "N. Lang"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 10
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 217,
+        "name": "Lautaro Martínez"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 1
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 290,
+        "name": "V. van Dijk"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Missed Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 2
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 154,
+        "name": "L. Messi"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 3
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 37160,
+        "name": "S. Berghuis"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Missed Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 4
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 271,
+        "name": "L. Paredes"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 5
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 36899,
+        "name": "T. Koopmeiners"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 6
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 25416,
+        "name": "W. Weghorst"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 7
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 2468,
+        "name": "G. Montiel"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 8
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 5996,
+        "name": "E. Fernández"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Missed Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 9
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 246,
+        "name": "L. de Jong"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 128,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 226,
+        "name": "Denzel Dumfries"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Red Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 128,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 226,
+        "name": "Denzel Dumfries"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 128,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 544,
+        "name": "Noa Lang"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 128,
+        "extra": null
+      },
+      "team": {
+        "id": 1118,
+        "name": "Netherlands",
+        "logo": "https://media.api-sports.io/football/teams/1118.png"
+      },
+      "player": {
+        "id": 226,
+        "name": "Denzel Dumfries"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    }
+  ]
+}

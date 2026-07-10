@@ -1,0 +1,212 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "855744"
+  },
+  "errors": [],
+  "results": 9,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": 57,
+        "extra": null
+      },
+      "team": {
+        "id": 7,
+        "name": "Uruguay",
+        "logo": "https://media.api-sports.io/football/teams/7.png"
+      },
+      "player": {
+        "id": 854,
+        "name": "Martín Cáceres"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 64,
+        "extra": null
+      },
+      "team": {
+        "id": 7,
+        "name": "Uruguay",
+        "logo": "https://media.api-sports.io/football/teams/7.png"
+      },
+      "player": {
+        "id": 157,
+        "name": "L. Suárez"
+      },
+      "assist": {
+        "id": 274,
+        "name": "E. Cavani"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 74,
+        "extra": null
+      },
+      "team": {
+        "id": 17,
+        "name": "South Korea",
+        "logo": "https://media.api-sports.io/football/teams/17.png"
+      },
+      "player": {
+        "id": 2906,
+        "name": "Lee Jae-Sung"
+      },
+      "assist": {
+        "id": 34395,
+        "name": "Son Jun-Ho"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 74,
+        "extra": null
+      },
+      "team": {
+        "id": 17,
+        "name": "South Korea",
+        "logo": "https://media.api-sports.io/football/teams/17.png"
+      },
+      "player": {
+        "id": 2910,
+        "name": "Hwang Ui-Jo"
+      },
+      "assist": {
+        "id": 34211,
+        "name": "Cho Gue-Sung"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 75,
+        "extra": null
+      },
+      "team": {
+        "id": 17,
+        "name": "South Korea",
+        "logo": "https://media.api-sports.io/football/teams/17.png"
+      },
+      "player": {
+        "id": 2908,
+        "name": "Na Sang-Ho"
+      },
+      "assist": {
+        "id": 927,
+        "name": "Lee Kang-In"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 78,
+        "extra": null
+      },
+      "team": {
+        "id": 7,
+        "name": "Uruguay",
+        "logo": "https://media.api-sports.io/football/teams/7.png"
+      },
+      "player": {
+        "id": 211,
+        "name": "M. Vecino"
+      },
+      "assist": {
+        "id": 5995,
+        "name": "N. de la Cruz"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 79,
+        "extra": null
+      },
+      "team": {
+        "id": 7,
+        "name": "Uruguay",
+        "logo": "https://media.api-sports.io/football/teams/7.png"
+      },
+      "player": {
+        "id": 47254,
+        "name": "M. Olivera"
+      },
+      "assist": {
+        "id": 51572,
+        "name": "M. Viña"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 88,
+        "extra": null
+      },
+      "team": {
+        "id": 17,
+        "name": "South Korea",
+        "logo": "https://media.api-sports.io/football/teams/17.png"
+      },
+      "player": {
+        "id": 34211,
+        "name": "Gue-sung Cho"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 88,
+        "extra": null
+      },
+      "team": {
+        "id": 7,
+        "name": "Uruguay",
+        "logo": "https://media.api-sports.io/football/teams/7.png"
+      },
+      "player": {
+        "id": 70078,
+        "name": "F. Pellistri"
+      },
+      "assist": {
+        "id": 1290,
+        "name": "G. Varela"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    }
+  ]
+}

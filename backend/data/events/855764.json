@@ -1,0 +1,344 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "855764"
+  },
+  "errors": [],
+  "results": 15,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": 38,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 154,
+        "name": "Lionel Messi"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Var",
+      "detail": "Penalty confirmed",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 24,
+        "name": "Poland",
+        "logo": "https://media.api-sports.io/football/teams/24.png"
+      },
+      "player": {
+        "id": 2385,
+        "name": "K. Świderski"
+      },
+      "assist": {
+        "id": 40809,
+        "name": "M. Skóraś"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 24,
+        "name": "Poland",
+        "logo": "https://media.api-sports.io/football/teams/24.png"
+      },
+      "player": {
+        "id": 3007,
+        "name": "P. Frankowski"
+      },
+      "assist": {
+        "id": 40560,
+        "name": "J. Kamiński"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 6716,
+        "name": "A. Mac Allister"
+      },
+      "assist": {
+        "id": 6503,
+        "name": "N. Molina"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 49,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 1493,
+        "name": "Marcos Acuña"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 59,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 266,
+        "name": "Á. Di María"
+      },
+      "assist": {
+        "id": 271,
+        "name": "L. Paredes"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 59,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 1493,
+        "name": "M. Acuña"
+      },
+      "assist": {
+        "id": 529,
+        "name": "N. Tagliafico"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 62,
+        "extra": null
+      },
+      "team": {
+        "id": 24,
+        "name": "Poland",
+        "logo": "https://media.api-sports.io/football/teams/24.png"
+      },
+      "player": {
+        "id": 19826,
+        "name": "K. Bielik"
+      },
+      "assist": {
+        "id": 3011,
+        "name": "D. Szymański"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 67,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 6009,
+        "name": "J. Álvarez"
+      },
+      "assist": {
+        "id": 5996,
+        "name": "E. Fernández"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 72,
+        "extra": null
+      },
+      "team": {
+        "id": 24,
+        "name": "Poland",
+        "logo": "https://media.api-sports.io/football/teams/24.png"
+      },
+      "player": {
+        "id": 3000,
+        "name": "B. Bereszyński"
+      },
+      "assist": {
+        "id": 3002,
+        "name": "A. Jędrzejczyk"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 78,
+        "extra": null
+      },
+      "team": {
+        "id": 24,
+        "name": "Poland",
+        "logo": "https://media.api-sports.io/football/teams/24.png"
+      },
+      "player": {
+        "id": 481,
+        "name": "Grzegorz Krychowiak"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 79,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 6009,
+        "name": "J. Álvarez"
+      },
+      "assist": {
+        "id": 217,
+        "name": "Lautaro Martínez"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 79,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 5996,
+        "name": "E. Fernández"
+      },
+      "assist": {
+        "id": 2469,
+        "name": "G. Pezzella"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 83,
+        "extra": null
+      },
+      "team": {
+        "id": 24,
+        "name": "Poland",
+        "logo": "https://media.api-sports.io/football/teams/24.png"
+      },
+      "player": {
+        "id": 481,
+        "name": "G. Krychowiak"
+      },
+      "assist": {
+        "id": 1651,
+        "name": "K. Piątek"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 84,
+        "extra": null
+      },
+      "team": {
+        "id": 26,
+        "name": "Argentina",
+        "logo": "https://media.api-sports.io/football/teams/26.png"
+      },
+      "player": {
+        "id": 6716,
+        "name": "A. Mac Allister"
+      },
+      "assist": {
+        "id": 6067,
+        "name": "T. Almada"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    }
+  ]
+}

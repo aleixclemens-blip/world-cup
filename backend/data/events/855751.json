@@ -1,0 +1,322 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "855751"
+  },
+  "errors": [],
+  "results": 14,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": 20,
+        "extra": null
+      },
+      "team": {
+        "id": 21,
+        "name": "Denmark",
+        "logo": "https://media.api-sports.io/football/teams/21.png"
+      },
+      "player": {
+        "id": 2282,
+        "name": "Andreas Christensen"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 23,
+        "extra": null
+      },
+      "team": {
+        "id": 21,
+        "name": "Denmark",
+        "logo": "https://media.api-sports.io/football/teams/21.png"
+      },
+      "player": {
+        "id": 1274,
+        "name": "Andreas Cornelius"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 43,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 1257,
+        "name": "Jules Koundé"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 21,
+        "name": "Denmark",
+        "logo": "https://media.api-sports.io/football/teams/21.png"
+      },
+      "player": {
+        "id": 1274,
+        "name": "A. Cornelius"
+      },
+      "assist": {
+        "id": 2737,
+        "name": "M. Braithwaite"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 61,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 278,
+        "name": "K. Mbappé"
+      },
+      "assist": {
+        "id": 47300,
+        "name": "T. Hernández"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 62,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 2295,
+        "name": "O. Giroud"
+      },
+      "assist": {
+        "id": 21509,
+        "name": "M. Thuram"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 68,
+        "extra": null
+      },
+      "team": {
+        "id": 21,
+        "name": "Denmark",
+        "logo": "https://media.api-sports.io/football/teams/21.png"
+      },
+      "player": {
+        "id": 2282,
+        "name": "A. Christensen"
+      },
+      "assist": {
+        "id": 2729,
+        "name": "J. Andersen"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 73,
+        "extra": null
+      },
+      "team": {
+        "id": 21,
+        "name": "Denmark",
+        "logo": "https://media.api-sports.io/football/teams/21.png"
+      },
+      "player": {
+        "id": 15908,
+        "name": "M. Damsgaard"
+      },
+      "assist": {
+        "id": 550,
+        "name": "K. Dolberg"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 75,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 153,
+        "name": "O. Dembélé"
+      },
+      "assist": {
+        "id": 508,
+        "name": "K. Coman"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 75,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 742,
+        "name": "R. Varane"
+      },
+      "assist": {
+        "id": 1145,
+        "name": "I. Konaté"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 85,
+        "extra": null
+      },
+      "team": {
+        "id": 21,
+        "name": "Denmark",
+        "logo": "https://media.api-sports.io/football/teams/21.png"
+      },
+      "player": {
+        "id": 15884,
+        "name": "J. Lindstrøm"
+      },
+      "assist": {
+        "id": 30407,
+        "name": "C. Nørgaard"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 86,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 278,
+        "name": "K. Mbappé"
+      },
+      "assist": {
+        "id": 56,
+        "name": "A. Griezmann"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 90,
+        "extra": 3
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 56,
+        "name": "A. Griezmann"
+      },
+      "assist": {
+        "id": 22254,
+        "name": "Y. Fofana"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 90,
+        "extra": 2
+      },
+      "team": {
+        "id": 21,
+        "name": "Denmark",
+        "logo": "https://media.api-sports.io/football/teams/21.png"
+      },
+      "player": {
+        "id": 533,
+        "name": "R. Kristensen"
+      },
+      "assist": {
+        "id": 15623,
+        "name": "A. Bah"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import { Standing } from "../entities/Standing";
 import { Fixture } from "../entities/Fixture";
 import { Event } from "../entities/Event";
 
-const DATA_DIR = path.join(__dirname, "../../.agents/tasks/data");
+const DATA_DIR = path.join(__dirname, "../../data");
 
 interface StandingJsonItem {
   team: { id: number; name: string };

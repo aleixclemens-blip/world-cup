@@ -1,0 +1,366 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "977705"
+  },
+  "errors": [],
+  "results": 16,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": 7,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 762,
+        "name": "Vinícius Júnior"
+      },
+      "assist": {
+        "id": 276,
+        "name": "Neymar"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 13,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 276,
+        "name": "Neymar"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 29,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 2413,
+        "name": "Richarlison"
+      },
+      "assist": {
+        "id": 259,
+        "name": "Thiago Silva"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 36,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 1646,
+        "name": "Lucas Paquetá"
+      },
+      "assist": {
+        "id": 762,
+        "name": "Vinícius Júnior"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 44,
+        "extra": null
+      },
+      "team": {
+        "id": 17,
+        "name": "South Korea",
+        "logo": "https://media.api-sports.io/football/teams/17.png"
+      },
+      "player": {
+        "id": 2903,
+        "name": "Woo-Young Jung"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 17,
+        "name": "South Korea",
+        "logo": "https://media.api-sports.io/football/teams/17.png"
+      },
+      "player": {
+        "id": 2896,
+        "name": "Kim Jin-Su"
+      },
+      "assist": {
+        "id": 2894,
+        "name": "Hong Chul"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 17,
+        "name": "South Korea",
+        "logo": "https://media.api-sports.io/football/teams/17.png"
+      },
+      "player": {
+        "id": 2903,
+        "name": "Jung Woo-Young"
+      },
+      "assist": {
+        "id": 34395,
+        "name": "Son Jun-Ho"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 63,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 372,
+        "name": "Éder Militão"
+      },
+      "assist": {
+        "id": 256,
+        "name": "Dani Alves"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 65,
+        "extra": null
+      },
+      "team": {
+        "id": 17,
+        "name": "South Korea",
+        "logo": "https://media.api-sports.io/football/teams/17.png"
+      },
+      "player": {
+        "id": 2901,
+        "name": "Hwang In-Beom"
+      },
+      "assist": {
+        "id": 2909,
+        "name": "Paik Seung-Ho"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 72,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 618,
+        "name": "Danilo"
+      },
+      "assist": {
+        "id": 30497,
+        "name": "Bremer"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 72,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 762,
+        "name": "Vinícius Júnior"
+      },
+      "assist": {
+        "id": 127769,
+        "name": "Gabriel Martinelli"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 74,
+        "extra": null
+      },
+      "team": {
+        "id": 17,
+        "name": "South Korea",
+        "logo": "https://media.api-sports.io/football/teams/17.png"
+      },
+      "player": {
+        "id": 2906,
+        "name": "Lee Jae-Sung"
+      },
+      "assist": {
+        "id": 927,
+        "name": "Lee Kang-In"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 76,
+        "extra": null
+      },
+      "team": {
+        "id": 17,
+        "name": "South Korea",
+        "logo": "https://media.api-sports.io/football/teams/17.png"
+      },
+      "player": {
+        "id": 2909,
+        "name": "Paik Seung-Ho"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 80,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 280,
+        "name": "Alisson"
+      },
+      "assist": {
+        "id": 2410,
+        "name": "Weverton"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 80,
+        "extra": null
+      },
+      "team": {
+        "id": 17,
+        "name": "South Korea",
+        "logo": "https://media.api-sports.io/football/teams/17.png"
+      },
+      "player": {
+        "id": 34211,
+        "name": "Cho Gue-Sung"
+      },
+      "assist": {
+        "id": 2910,
+        "name": "Hwang Ui-Jo"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 81,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 276,
+        "name": "Neymar"
+      },
+      "assist": {
+        "id": 10009,
+        "name": "Rodrygo"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    }
+  ]
+}

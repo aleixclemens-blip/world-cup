@@ -1,0 +1,410 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "871850"
+  },
+  "errors": [],
+  "results": 18,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": 9,
+        "extra": null
+      },
+      "team": {
+        "id": 20,
+        "name": "Australia",
+        "logo": "https://media.api-sports.io/football/teams/20.png"
+      },
+      "player": {
+        "id": 6888,
+        "name": "C. Goodwin"
+      },
+      "assist": {
+        "id": 2751,
+        "name": "M. Leckie"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 13,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 33,
+        "name": "L. Hernández"
+      },
+      "assist": {
+        "id": 47300,
+        "name": "T. Hernández"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 27,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 272,
+        "name": "A. Rabiot"
+      },
+      "assist": {
+        "id": 47300,
+        "name": "T. Hernández"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 32,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 2295,
+        "name": "O. Giroud"
+      },
+      "assist": {
+        "id": 272,
+        "name": "A. Rabiot"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 55,
+        "extra": null
+      },
+      "team": {
+        "id": 20,
+        "name": "Australia",
+        "logo": "https://media.api-sports.io/football/teams/20.png"
+      },
+      "player": {
+        "id": 6993,
+        "name": "Mitchell Duke"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 56,
+        "extra": null
+      },
+      "team": {
+        "id": 20,
+        "name": "Australia",
+        "logo": "https://media.api-sports.io/football/teams/20.png"
+      },
+      "player": {
+        "id": 6993,
+        "name": "M. Duke"
+      },
+      "assist": {
+        "id": 19774,
+        "name": "J. Cummings"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 68,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 278,
+        "name": "K. Mbappé"
+      },
+      "assist": {
+        "id": 153,
+        "name": "O. Dembélé"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 71,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 2295,
+        "name": "O. Giroud"
+      },
+      "assist": {
+        "id": 278,
+        "name": "K. Mbappé"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 73,
+        "extra": null
+      },
+      "team": {
+        "id": 20,
+        "name": "Australia",
+        "logo": "https://media.api-sports.io/football/teams/20.png"
+      },
+      "player": {
+        "id": 6888,
+        "name": "C. Goodwin"
+      },
+      "assist": {
+        "id": 349987,
+        "name": "G. Kuol"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 73,
+        "extra": null
+      },
+      "team": {
+        "id": 20,
+        "name": "Australia",
+        "logo": "https://media.api-sports.io/football/teams/20.png"
+      },
+      "player": {
+        "id": 6913,
+        "name": "R. McGree"
+      },
+      "assist": {
+        "id": 2755,
+        "name": "A. Mabil"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 77,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 153,
+        "name": "O. Dembélé"
+      },
+      "assist": {
+        "id": 508,
+        "name": "K. Coman"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 77,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 1271,
+        "name": "A. Tchouaméni"
+      },
+      "assist": {
+        "id": 22254,
+        "name": "Y. Fofana"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 80,
+        "extra": null
+      },
+      "team": {
+        "id": 20,
+        "name": "Australia",
+        "logo": "https://media.api-sports.io/football/teams/20.png"
+      },
+      "player": {
+        "id": 2749,
+        "name": "Jackson Irvine"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 85,
+        "extra": null
+      },
+      "team": {
+        "id": 20,
+        "name": "Australia",
+        "logo": "https://media.api-sports.io/football/teams/20.png"
+      },
+      "player": {
+        "id": 2749,
+        "name": "J. Irvine"
+      },
+      "assist": {
+        "id": 6984,
+        "name": "K. Baccus"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 85,
+        "extra": null
+      },
+      "team": {
+        "id": 20,
+        "name": "Australia",
+        "logo": "https://media.api-sports.io/football/teams/20.png"
+      },
+      "player": {
+        "id": 6908,
+        "name": "N. Atkinson"
+      },
+      "assist": {
+        "id": 2742,
+        "name": "M. Degenek"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 89,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 2295,
+        "name": "O. Giroud"
+      },
+      "assist": {
+        "id": 21509,
+        "name": "M. Thuram"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 89,
+        "extra": null
+      },
+      "team": {
+        "id": 2,
+        "name": "France",
+        "logo": "https://media.api-sports.io/football/teams/2.png"
+      },
+      "player": {
+        "id": 2725,
+        "name": "B. Pavard"
+      },
+      "assist": {
+        "id": 1257,
+        "name": "J. Koundé"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 90,
+        "extra": 4
+      },
+      "team": {
+        "id": 20,
+        "name": "Australia",
+        "logo": "https://media.api-sports.io/football/teams/20.png"
+      },
+      "player": {
+        "id": 19050,
+        "name": "Aaron Mooy"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    }
+  ]
+}

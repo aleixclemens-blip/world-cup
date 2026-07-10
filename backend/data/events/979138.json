@@ -1,0 +1,322 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "979138"
+  },
+  "errors": [],
+  "results": 14,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": 7,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 129033,
+        "name": "J. Gvardiol"
+      },
+      "assist": {
+        "id": 207,
+        "name": "I. Perišić"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 9,
+        "extra": null
+      },
+      "team": {
+        "id": 31,
+        "name": "Morocco",
+        "logo": "https://media.api-sports.io/football/teams/31.png"
+      },
+      "player": {
+        "id": 36540,
+        "name": "A. Dari"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 42,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 1330,
+        "name": "M. Oršić"
+      },
+      "assist": {
+        "id": 611,
+        "name": "M. Livaja"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 46,
+        "extra": null
+      },
+      "team": {
+        "id": 31,
+        "name": "Morocco",
+        "logo": "https://media.api-sports.io/football/teams/31.png"
+      },
+      "player": {
+        "id": 19053,
+        "name": "A. Sabiri"
+      },
+      "assist": {
+        "id": 17632,
+        "name": "I. Chair"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 56,
+        "extra": null
+      },
+      "team": {
+        "id": 31,
+        "name": "Morocco",
+        "logo": "https://media.api-sports.io/football/teams/31.png"
+      },
+      "player": {
+        "id": 340573,
+        "name": "B. El Khannouss"
+      },
+      "assist": {
+        "id": 129678,
+        "name": "A. Ounahi"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 61,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 726,
+        "name": "A. Kramarić"
+      },
+      "assist": {
+        "id": 842,
+        "name": "N. Vlašić"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 64,
+        "extra": null
+      },
+      "team": {
+        "id": 31,
+        "name": "Morocco",
+        "logo": "https://media.api-sports.io/football/teams/31.png"
+      },
+      "player": {
+        "id": 36540,
+        "name": "A. Dari"
+      },
+      "assist": {
+        "id": 36556,
+        "name": "B. Benoun"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 64,
+        "extra": null
+      },
+      "team": {
+        "id": 31,
+        "name": "Morocco",
+        "logo": "https://media.api-sports.io/football/teams/31.png"
+      },
+      "player": {
+        "id": 2710,
+        "name": "S. Boufal"
+      },
+      "assist": {
+        "id": 129169,
+        "name": "A. Zaroury"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 66,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 611,
+        "name": "M. Livaja"
+      },
+      "assist": {
+        "id": 1331,
+        "name": "B. Petković"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 67,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 1321,
+        "name": "L. Majer"
+      },
+      "assist": {
+        "id": 2763,
+        "name": "M. Pašalić"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 67,
+        "extra": null
+      },
+      "team": {
+        "id": 31,
+        "name": "Morocco",
+        "logo": "https://media.api-sports.io/football/teams/31.png"
+      },
+      "player": {
+        "id": 31386,
+        "name": "J. El Yamiq"
+      },
+      "assist": {
+        "id": 8587,
+        "name": "S. Amallah"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 69,
+        "extra": null
+      },
+      "team": {
+        "id": 31,
+        "name": "Morocco",
+        "logo": "https://media.api-sports.io/football/teams/31.png"
+      },
+      "player": {
+        "id": 129678,
+        "name": "Azzedine Ounahi"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Argument"
+    },
+    {
+      "time": {
+        "elapsed": 84,
+        "extra": null
+      },
+      "team": {
+        "id": 31,
+        "name": "Morocco",
+        "logo": "https://media.api-sports.io/football/teams/31.png"
+      },
+      "player": {
+        "id": 8587,
+        "name": "Selim Amallah"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 90,
+        "extra": 5
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 1330,
+        "name": "M. Oršić"
+      },
+      "assist": {
+        "id": 14395,
+        "name": "K. Jakić"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    }
+  ]
+}

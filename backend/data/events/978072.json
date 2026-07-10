@@ -1,0 +1,564 @@
+{
+  "get": "fixtures/events",
+  "parameters": {
+    "fixture": "978072"
+  },
+  "errors": [],
+  "results": 25,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "time": {
+        "elapsed": 25,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 618,
+        "name": "Danilo"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 31,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 201,
+        "name": "Marcelo Brozović"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 56,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 1496,
+        "name": "Raphinha"
+      },
+      "assist": {
+        "id": 9971,
+        "name": "Antony"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 64,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 762,
+        "name": "Vinícius Júnior"
+      },
+      "assist": {
+        "id": 10009,
+        "name": "Rodrygo"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 68,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 747,
+        "name": "Casemiro"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 72,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 2763,
+        "name": "M. Pašalić"
+      },
+      "assist": {
+        "id": 842,
+        "name": "N. Vlašić"
+      },
+      "type": "subst",
+      "detail": "Substitution 1",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 72,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 726,
+        "name": "A. Kramarić"
+      },
+      "assist": {
+        "id": 1331,
+        "name": "B. Petković"
+      },
+      "type": "subst",
+      "detail": "Substitution 2",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 77,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 257,
+        "name": "Marquinhos"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": "Foul"
+    },
+    {
+      "time": {
+        "elapsed": 84,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 2413,
+        "name": "Richarlison"
+      },
+      "assist": {
+        "id": 10321,
+        "name": "Pedro"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 105,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 2291,
+        "name": "M. Kovačić"
+      },
+      "assist": {
+        "id": 1321,
+        "name": "L. Majer"
+      },
+      "type": "subst",
+      "detail": "Substitution 3",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 105,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 1646,
+        "name": "Lucas Paquetá"
+      },
+      "assist": {
+        "id": 905,
+        "name": "Fred"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 105,
+        "extra": null
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 372,
+        "name": "Éder Militão"
+      },
+      "assist": {
+        "id": 860,
+        "name": "Alex Sandro"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 105,
+        "extra": 1
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 276,
+        "name": "Neymar"
+      },
+      "assist": {
+        "id": 1646,
+        "name": "Lucas Paquetá"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 110,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 26303,
+        "name": "B. Sosa"
+      },
+      "assist": {
+        "id": 46746,
+        "name": "A. Budimir"
+      },
+      "type": "subst",
+      "detail": "Substitution 4",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 114,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 201,
+        "name": "M. Brozović"
+      },
+      "assist": {
+        "id": 1330,
+        "name": "M. Oršić"
+      },
+      "type": "subst",
+      "detail": "Substitution 5",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 117,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 1331,
+        "name": "Bruno Petković"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Card",
+      "detail": "Yellow Card",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 117,
+        "extra": null
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 1331,
+        "name": "B. Petković"
+      },
+      "assist": {
+        "id": 1330,
+        "name": "M. Oršić"
+      },
+      "type": "Goal",
+      "detail": "Normal Goal",
+      "comments": null
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 1
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 842,
+        "name": "N. Vlašić"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 2
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 10009,
+        "name": "Rodrygo"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Missed Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 3
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 1321,
+        "name": "L. Majer"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 4
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 747,
+        "name": "Casemiro"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 5
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 754,
+        "name": "L. Modrić"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 6
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 10321,
+        "name": "Pedro"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 7
+      },
+      "team": {
+        "id": 3,
+        "name": "Croatia",
+        "logo": "https://media.api-sports.io/football/teams/3.png"
+      },
+      "player": {
+        "id": 1330,
+        "name": "M. Oršić"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Penalty",
+      "comments": "Penalty Shootout"
+    },
+    {
+      "time": {
+        "elapsed": 120,
+        "extra": 8
+      },
+      "team": {
+        "id": 6,
+        "name": "Brazil",
+        "logo": "https://media.api-sports.io/football/teams/6.png"
+      },
+      "player": {
+        "id": 257,
+        "name": "Marquinhos"
+      },
+      "assist": {
+        "id": null,
+        "name": null
+      },
+      "type": "Goal",
+      "detail": "Missed Penalty",
+      "comments": "Penalty Shootout"
+    }
+  ]
+}
