@@ -22,6 +22,12 @@ export class TeamsService {
     );
   }
 
+  public getTeamById(id: number): Observable<Team | undefined> {
+    return this.getTeams().pipe(
+      map((teams) => teams.find((t) => t.id === id))
+    );
+  }
+
   public getFavoriteTeams(): Observable<Team[]> {
     return this.http.get<ApiTeam[]>(`${API_URL}/teams/favorites`).pipe(
       map((apiTeams) =>

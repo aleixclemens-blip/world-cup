@@ -19,8 +19,8 @@ export class AuthService {
   public readonly userInitials = computed(() => {
     const user = this.currentUserSignal();
     if (!user) return '';
-    const prefix = user.email.split('@')[0];
-    return prefix.substring(0, 2).toUpperCase();
+    const name = user.username || user.email.split('@')[0];
+    return name.substring(0, 2).toUpperCase();
   });
 
   public readonly apiUrl = API_URL;
@@ -40,14 +40,14 @@ export class AuthService {
     });
   }
 
-  public login(email: string, password: string): Observable<User> {
-    return this.http.post<User>(`${API_URL}/auth/login`, { email, password }).pipe(
+  public login(credentials: { email?: string; username?: string; password: string }): Observable<User> {
+    return this.http.post<User>(`${API_URL}/auth/login`, credentials).pipe(
       tap((user) => this.currentUserSignal.set(user))
     );
   }
 
-  public register(email: string, password: string): Observable<any> {
-    return this.http.post(`${API_URL}/auth/register`, { email, password });
+  public register(email: string, username: string, password: string): Observable<any> {
+    return this.http.post(`${API_URL}/auth/register`, { email, username, password });
   }
 
   public refresh(): Observable<any> {

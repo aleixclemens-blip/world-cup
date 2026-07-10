@@ -4,7 +4,6 @@ import { TeamsService } from './services/teams.service';
 import { of, throwError } from 'rxjs';
 import { vi } from 'vitest';
 import { Team } from './types/teams.types';
-
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/services/auth.service';
 
@@ -68,7 +67,11 @@ describe('TeamsComponent', () => {
 
     const fixture = TestBed.createComponent(TeamsComponent);
     const component = fixture.componentInstance;
-    await component['loadTeams']();
+    fixture.detectChanges();
+
+    // Wait for initial debounceTime(300) to pass
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    fixture.detectChanges();
 
     const expectedData = mockData.map(team => ({
       ...team,
@@ -86,7 +89,11 @@ describe('TeamsComponent', () => {
 
     const fixture = TestBed.createComponent(TeamsComponent);
     const component = fixture.componentInstance;
-    await component['loadTeams']();
+    fixture.detectChanges();
+
+    // Wait for initial debounceTime(300) to pass
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    fixture.detectChanges();
 
     expect(component['isLoading']()).toBe(false);
     expect(component['error']()).toContain('No se pudieron cargar');
@@ -111,6 +118,8 @@ describe('TeamsComponent', () => {
 
     const fixture = TestBed.createComponent(TeamsComponent);
     const component = fixture.componentInstance;
+    fixture.detectChanges();
+
     await component['toggleFavorite'](mockTeam);
 
     expect(routerMock.navigate).toHaveBeenCalledWith(['/login']);
@@ -135,6 +144,8 @@ describe('TeamsComponent', () => {
 
     const fixture = TestBed.createComponent(TeamsComponent);
     const component = fixture.componentInstance;
+    fixture.detectChanges();
+
     component['teams'].set([mockTeam]);
 
     await component['toggleFavorite'](mockTeam);
@@ -162,6 +173,8 @@ describe('TeamsComponent', () => {
 
     const fixture = TestBed.createComponent(TeamsComponent);
     const component = fixture.componentInstance;
+    fixture.detectChanges();
+
     component['teams'].set([mockTeam]);
 
     await component['toggleFavorite'](mockTeam);
@@ -192,7 +205,11 @@ describe('TeamsComponent', () => {
 
     const fixture = TestBed.createComponent(TeamsComponent);
     const component = fixture.componentInstance;
-    await component['loadTeams']();
+    fixture.detectChanges();
+
+    // Wait for initial debounceTime(300) to pass
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    fixture.detectChanges();
 
     expect(component['teams']()[0].isFavorite).toBe(true);
   });
@@ -200,7 +217,7 @@ describe('TeamsComponent', () => {
   it('should debounce search input changes and load filtered teams', async () => {
     const fixture = TestBed.createComponent(TeamsComponent);
     const component = fixture.componentInstance;
-    component.ngOnInit();
+    fixture.detectChanges();
 
     teamsServiceMock.getTeams.mockClear();
 
@@ -209,7 +226,8 @@ describe('TeamsComponent', () => {
     expect(component['searchQuery']()).toBe('Bel');
     
     // Wait for debounce (300ms + buffer)
-    await new Promise((resolve) => setTimeout(resolve, 320));
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    fixture.detectChanges();
 
     expect(teamsServiceMock.getTeams).toHaveBeenCalledWith('Bel');
 
@@ -218,9 +236,8 @@ describe('TeamsComponent', () => {
     component['clearSearch']();
     expect(component['searchQuery']()).toBe('');
     
-    await new Promise((resolve) => setTimeout(resolve, 320));
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    fixture.detectChanges();
     expect(teamsServiceMock.getTeams).toHaveBeenCalledWith('');
-
-    component.ngOnDestroy();
   });
 });

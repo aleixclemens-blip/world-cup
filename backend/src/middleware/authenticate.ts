@@ -3,9 +3,13 @@ import jwt from "jsonwebtoken";
 import { config } from "../config";
 import { UnauthorizedError } from "../lib/errors";
 
+import { UserRole } from "../entities/User";
+
 interface DecodedToken {
   userId: number;
   email: string;
+  username: string;
+  role: UserRole;
 }
 
 export function authenticate(
@@ -20,10 +24,12 @@ export function authenticate(
   }
 
   try {
-    const decoded = jwt.verify(token, config.JWT_ACCESS_SECRET) as DecodedToken;
+    const decoded = jwt.verify(token, config.JWT_ACCESS_SECRET, { algorithms: ["HS256"] }) as DecodedToken;
     req.user = {
       id: decoded.userId,
       email: decoded.email,
+      username: decoded.username,
+      role: decoded.role,
     };
     next();
   } catch {

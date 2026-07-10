@@ -34,17 +34,17 @@ describe('RegisterComponent', () => {
   });
 
   it('should validate password length (min 8 characters)', () => {
-    component['registerModel'].set({ email: 'test@example.com', password: 'short', confirmPassword: 'short' });
+    component['registerModel'].set({ email: 'test@example.com', username: 'testuser', password: 'short', confirmPassword: 'short' });
     fixture.detectChanges();
     expect(component['registerForm']().invalid()).toBe(true);
 
-    component['registerModel'].set({ email: 'test@example.com', password: 'longpassword', confirmPassword: 'longpassword' });
+    component['registerModel'].set({ email: 'test@example.com', username: 'testuser', password: 'longpassword', confirmPassword: 'longpassword' });
     fixture.detectChanges();
     expect(component['registerForm']().valid()).toBe(true);
   });
 
   it('should invalidate form if passwords do not match', () => {
-    component['registerModel'].set({ email: 'test@example.com', password: 'longpassword', confirmPassword: 'different' });
+    component['registerModel'].set({ email: 'test@example.com', username: 'testuser', password: 'longpassword', confirmPassword: 'different' });
     fixture.detectChanges();
     expect(component['registerForm']().invalid()).toBe(true);
   });

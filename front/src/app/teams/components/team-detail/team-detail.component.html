@@ -1,0 +1,261 @@
+<div class="max-w-7xl mx-auto px-6 py-12">
+  <!-- Back Button & Header -->
+  <div class="flex items-center justify-between mb-8 select-none">
+    <button (click)="goBack()"
+      class="inline-flex items-center gap-1.5 px-4.5 py-2.5 rounded-xl text-sm font-semibold border border-gray-200/80 bg-white/80 hover:bg-gray-50 text-gray-700 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-gold-primary/20 cursor-pointer">
+      <span class="material-icons text-base">arrow_back</span>
+      Volver
+    </button>
+    <span
+      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-gold-light text-gold-hover border border-gold-primary/20 uppercase tracking-wider">
+      Detalle de Selección
+    </span>
+  </div>
+
+  @if (isLoading()) {
+    <!-- Loading skeleton -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-pulse">
+      <!-- Left Card Skeleton -->
+      <div class="lg:col-span-1 bg-white/80 border border-gray-200/80 shadow-sm rounded-2xl p-6 flex flex-col items-center gap-6">
+        <div class="w-24 h-16 bg-gray-200 rounded-lg"></div>
+        <div class="h-6 bg-gray-200 rounded w-1/2"></div>
+        <div class="w-full space-y-3 mt-4">
+          <div class="h-4 bg-gray-200 rounded w-3/4 mx-auto"></div>
+          <div class="h-4 bg-gray-200 rounded w-2/3 mx-auto"></div>
+          <div class="h-10 bg-gray-200 rounded w-full mt-4"></div>
+        </div>
+      </div>
+
+      <!-- Right Matches List Skeleton -->
+      <div class="lg:col-span-2 space-y-6">
+        <div class="h-6 bg-gray-200 rounded w-1/4 mb-4"></div>
+        @for (item of [1, 2]; track item) {
+          <div class="bg-white/80 border border-gray-200/80 shadow-sm rounded-2xl p-6 flex flex-col gap-4">
+            <div class="h-4 bg-gray-200 rounded w-1/4"></div>
+            <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4 py-2">
+              <div class="h-6 bg-gray-200 rounded w-3/4 ml-auto"></div>
+              <div class="h-8 bg-gray-200 rounded w-16 mx-auto"></div>
+              <div class="h-6 bg-gray-200 rounded w-3/4 mr-auto"></div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  } @else if (error()) {
+    <!-- Error State -->
+    <div class="max-w-md mx-auto bg-red-50 border border-red-200 rounded-2xl p-8 text-center shadow-sm">
+      <span class="material-icons text-red-500 text-5xl mb-3 select-none">error_outline</span>
+      <h3 class="text-lg font-bold text-gray-900 mb-2">Error de conexión</h3>
+      <p class="text-sm text-gray-600 mb-6">{{ error() }}</p>
+      <button (click)="retryTrigger.update(n => n + 1)"
+        class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-red-600 hover:bg-red-700 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 cursor-pointer">
+        <span class="material-icons text-sm">replay</span>
+        Reintentar
+      </button>
+    </div>
+  } @else {
+    <!-- Premium Two Column Details View -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Left Column: Team Details Card -->
+      <div class="lg:col-span-1 flex flex-col gap-6">
+        <div class="bg-white/80 backdrop-blur-md border border-gray-200/80 shadow-sm rounded-2xl p-6 flex flex-col items-center gap-5 text-center relative overflow-hidden">
+          <!-- Flag Display -->
+          @if (team()?.flag !== 'unknown') {
+            <img [src]="'https://flagcdn.com/w160/' + team()?.flag + '.png'" [alt]="'Bandera de ' + team()?.name"
+              class="w-28 md:w-32 h-auto rounded border border-gray-200/80 shadow-md select-none" />
+          } @else {
+            <span class="text-5xl select-none" [attr.aria-label]="'Bandera de ' + team()?.name">🏳️</span>
+          }
+
+          <!-- Team Title -->
+          <div class="mt-2 select-none">
+            <h2 class="text-2xl font-extrabold text-gray-900 tracking-tight">{{ team()?.name }}</h2>
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-800 border border-gray-200 mt-2">
+              {{ team()?.group?.name }}
+            </span>
+          </div>
+
+          <!-- Official Stadium Info -->
+          <div class="w-full border-t border-b border-gray-100 py-4 flex flex-col gap-3 text-left">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider select-none">Sede Oficial</span>
+            <div class="flex items-center gap-3">
+              <div class="flex items-center justify-center w-9 h-9 rounded-lg bg-gold-light text-gold-hover border border-gold-primary/20">
+                <span class="material-icons text-xl select-none">stadium</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-semibold text-gray-800 leading-tight">{{ team()?.mainStadium }}</span>
+                <span class="text-xs text-gray-500 font-medium">{{ team()?.mainStadiumCity }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Historical Achievements -->
+          <div class="w-full text-left flex flex-col gap-3">
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider select-none">Palmarés Histórico</span>
+            <div class="flex flex-col gap-2">
+              @if ((team()?.worldCupsWon || 0) > 0 || (team()?.continentCupsWon || 0) > 0) {
+                @if ((team()?.worldCupsWon || 0) > 0) {
+                  <div class="flex items-center gap-2 text-sm text-gray-700 font-semibold select-none">
+                    <span class="material-icons text-amber-500 text-lg">emoji_events</span>
+                    <span>{{ team()?.worldCupsWon }} Copa{{ (team()?.worldCupsWon || 0) > 1 ? 's' : '' }} del Mundo</span>
+                  </div>
+                }
+                @if ((team()?.continentCupsWon || 0) > 0) {
+                  <div class="flex items-center gap-2 text-sm text-gray-700 font-semibold select-none">
+                    <span class="material-icons text-slate-400 text-lg">military_tech</span>
+                    <span>{{ team()?.continentCupsWon }} {{ team()?.continentCupName }}{{ (team()?.continentCupsWon || 0) > 1 ? 's' : '' }}</span>
+                  </div>
+                }
+              } @else {
+                <span class="text-sm text-gray-400 font-normal italic select-none">Sin copas oficiales en su palmarés</span>
+              }
+            </div>
+          </div>
+
+          <!-- Favorite Button Toggle -->
+          <button (click)="toggleFavorite()" [disabled]="isFavoriteLoading()"
+            class="w-full flex items-center justify-center gap-2 py-3 px-4 border text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-sm disabled:opacity-55 disabled:cursor-not-allowed mt-4"
+            [class]="team()?.isFavorite 
+              ? 'border-gold-primary/30 text-gold-hover bg-gold-light hover:bg-gold-light/80'
+              : 'border-transparent text-white bg-gold-primary hover:bg-gold-hover'">
+            @if (isFavoriteLoading()) {
+              <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            } @else {
+              <span class="material-icons text-lg">
+                {{ team()?.isFavorite ? 'star' : 'star_border' }}
+              </span>
+            }
+            {{ team()?.isFavorite ? 'Quitar de Favoritos' : 'Añadir a Favoritos' }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Matches list -->
+      <div class="lg:col-span-2 flex flex-col gap-6">
+        <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2 select-none">
+          <span class="w-2.5 h-2.5 rounded-full bg-gold-primary"></span>
+          Partidos Jugados
+        </h3>
+
+        <div class="flex flex-col gap-6">
+          @for (fixture of fixtures(); track fixture.id) {
+            <div class="bg-white/80 backdrop-blur-md border border-gray-200/80 shadow-sm rounded-2xl p-6 flex flex-col gap-4">
+              
+              <!-- Match Header Info -->
+              <div class="flex justify-between items-center text-xs font-semibold text-gray-400 border-b border-gray-100 pb-3 uppercase tracking-wider select-none">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold-primary"></span>
+                  <span>{{ fixture.round }}</span>
+                  @if (fixture.homeTeam.group?.name) {
+                    <span class="mx-1">•</span>
+                    <span>{{ fixture.homeTeam.group.name }}</span>
+                  }
+                </div>
+                @if (fixture.stadium) {
+                  <div class="flex items-center gap-1">
+                    <span class="material-icons text-sm">place</span>
+                    <span>{{ fixture.stadium }}, {{ fixture.stadiumCity }}</span>
+                  </div>
+                }
+              </div>
+
+              <!-- Main Score Row -->
+              <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4 py-2">
+                <!-- Home Team (Left) -->
+                <div class="flex items-center justify-end gap-3 md:gap-4 text-right">
+                  <span class="text-base md:text-lg font-bold text-gray-900 truncate"
+                    [class.text-gold-hover]="fixture.homeTeamId === team()?.id">
+                    {{ fixture.homeTeamName }}
+                  </span>
+                  @if (fixture.homeTeamFlag !== 'unknown') {
+                    <img [src]="'https://flagcdn.com/w40/' + fixture.homeTeamFlag + '.png'" [alt]="'Bandera de ' + fixture.homeTeamName"
+                      class="w-8 md:w-10 h-auto rounded border border-gray-200/80 shadow-sm select-none" />
+                  } @else {
+                    <span class="text-2xl md:text-3xl select-none" [attr.aria-label]="'Bandera de ' + fixture.homeTeamName">🏳️</span>
+                  }
+                </div>
+
+                <!-- Match Results Score (Middle) -->
+                <div class="flex flex-col items-center justify-center min-w-[6rem] px-2">
+                  @if (fixture.goalsHome !== null && fixture.goalsAway !== null) {
+                    <span class="text-2xl md:text-3xl font-extrabold text-gray-950 tracking-tight">
+                      {{ fixture.goalsHome }} - {{ fixture.goalsAway }}
+                    </span>
+                    @if (hasShootout(fixture)) {
+                      <span class="text-xs md:text-sm font-semibold text-gray-500/60 mt-1 select-none tracking-wide">
+                        (pen. {{ fixture.penaltiesHome }} - {{ fixture.penaltiesAway }})
+                      </span>
+                    }
+                  } @else {
+                    <span class="text-sm font-bold text-gray-400 uppercase tracking-widest bg-gray-50 border border-gray-100 rounded-lg px-3 py-1.5 select-none">
+                      vs
+                    </span>
+                  }
+                </div>
+
+                <!-- Away Team (Right) -->
+                <div class="flex items-center justify-start gap-3 md:gap-4 text-left">
+                  @if (fixture.awayTeamFlag !== 'unknown') {
+                    <img [src]="'https://flagcdn.com/w40/' + fixture.awayTeamFlag + '.png'" [alt]="'Bandera de ' + fixture.awayTeamName"
+                      class="w-8 md:w-10 h-auto rounded border border-gray-200/80 shadow-sm select-none" />
+                  } @else {
+                    <span class="text-2xl md:text-3xl select-none" [attr.aria-label]="'Bandera de ' + fixture.awayTeamName">🏳️</span>
+                  }
+                  <span class="text-base md:text-lg font-bold text-gray-900 truncate"
+                    [class.text-gold-hover]="fixture.awayTeamId === team()?.id">
+                    {{ fixture.awayTeamName }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Scorers Info Panel -->
+              @if (fixture.goalsHome !== null && fixture.goalsAway !== null) {
+                @if (getGroupedScorers(fixture, fixture.homeTeamId).length > 0 || getGroupedScorers(fixture, fixture.awayTeamId).length > 0) {
+                  <div class="grid grid-cols-2 gap-8 pt-3 border-t border-gray-100/60 text-xs md:text-sm">
+                    <!-- Home Scorers -->
+                    <div class="flex flex-col gap-1.5 text-right items-end justify-start">
+                      @for (scorer of getGroupedScorers(fixture, fixture.homeTeamId); track scorer.playerName) {
+                        <div class="flex items-center gap-2 text-gray-600">
+                          <span class="text-gray-400 font-medium">{{ scorer.minutes }}</span>
+                          <span class="font-semibold">{{ scorer.playerName }}</span>
+                          <span class="material-icons text-sm text-gray-400 select-none">sports_soccer</span>
+                        </div>
+                      }
+                    </div>
+
+                    <!-- Away Scorers -->
+                    <div class="flex flex-col gap-1.5 text-left items-start justify-start">
+                      @for (scorer of getGroupedScorers(fixture, fixture.awayTeamId); track scorer.playerName) {
+                        <div class="flex items-center gap-2 text-gray-600">
+                          <span class="material-icons text-sm text-gray-400 select-none">sports_soccer</span>
+                          <span class="font-semibold">{{ scorer.playerName }}</span>
+                          <span class="text-gray-400 font-medium">{{ scorer.minutes }}</span>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                }
+              }
+
+            </div>
+          } @empty {
+            <!-- Empty State -->
+            <div class="bg-white/80 border border-gray-200/80 shadow-sm rounded-2xl p-12 text-center select-none">
+              <span class="material-icons text-gray-300 text-6xl mb-3">sports_soccer</span>
+              <h4 class="text-lg font-bold text-gray-900 mb-1">Sin partidos jugados</h4>
+              <p class="text-sm text-gray-500 max-w-sm mx-auto">
+                Esta selección todavía no ha disputado ningún encuentro en el torneo.
+              </p>
+            </div>
+          }
+        </div>
+      </div>
+
+    </div>
+  }
+</div>

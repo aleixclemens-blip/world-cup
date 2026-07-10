@@ -11,8 +11,16 @@ export const routes: Routes = [
     loadComponent: () => import('./results/results.component').then((m) => m.ResultsComponent)
   },
   {
+    path: 'results/:fixtureId/comments',
+    loadComponent: () => import('./results/components/fixture-comments/fixture-comments.component').then((m) => m.FixtureCommentsComponent)
+  },
+  {
     path: 'teams',
     loadComponent: () => import('./teams/teams.component').then((m) => m.TeamsComponent)
+  },
+  {
+    path: 'teams/:id',
+    loadComponent: () => import('./teams/components/team-detail/team-detail.component').then((m) => m.TeamDetailComponent)
   },
   {
     path: 'login',

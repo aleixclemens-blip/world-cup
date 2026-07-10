@@ -7,6 +7,7 @@ import { Fixture } from "../entities/Fixture";
 import { User } from "../entities/User";
 import { RefreshToken } from "../entities/RefreshToken";
 import { Event } from "../entities/Event";
+import { Comment } from "../entities/Comment";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -17,7 +18,7 @@ export const AppDataSource = new DataSource({
   database: config.MYSQL_DB,
   synchronize: false,
   logging: config.NODE_ENV === "development",
-  entities: [Group, Team, Standing, Fixture, User, RefreshToken, Event],
+  entities: [Group, Team, Standing, Fixture, User, RefreshToken, Event, Comment],
   migrations: [
     __dirname + "/../migrations/*.ts",
     __dirname + "/../migrations/*.js",

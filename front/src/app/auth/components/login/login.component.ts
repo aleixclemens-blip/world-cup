@@ -6,7 +6,6 @@ import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
   imports: [FormField, RouterLink],
   templateUrl: './login.component.html'
 })
@@ -16,13 +15,12 @@ export class LoginComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
 
   protected readonly loginModel = signal({
-    email: '',
+    identifier: '',
     password: ''
   });
 
   protected readonly loginForm = form(this.loginModel, (s) => {
-    required(s.email, { message: 'El correo electrónico es obligatorio' });
-    email(s.email, { message: 'El correo electrónico no es válido' });
+    required(s.identifier, { message: 'El correo electrónico o nombre de usuario es obligatorio' });
     required(s.password, { message: 'La contraseña es obligatoria' });
   });
 
@@ -42,8 +40,16 @@ export class LoginComponent implements OnInit {
       this.errorMessage.set(null);
       this.successMessage.set(null);
       const credentials = this.loginModel();
+      const payload: { email?: string; username?: string; password: string } = {
+        password: credentials.password
+      };
+      if (credentials.identifier.includes('@')) {
+        payload.email = credentials.identifier;
+      } else {
+        payload.username = credentials.identifier;
+      }
       try {
-        await firstValueFrom(this.authService.login(credentials.email, credentials.password));
+        await firstValueFrom(this.authService.login(payload));
         this.router.navigate(['/standings']);
       } catch (err: any) {
         const errMsg = err.error?.message || 'Error al iniciar sesión. Por favor, inténtelo de nuevo.';

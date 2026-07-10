@@ -1,4 +1,256 @@
-<div class="max-w-7xl mx-auto px-6 py-8">
-  <h1 class="text-3xl font-bold text-gray-900 mb-4">Sección de Resultados</h1>
-  <p class="text-gray-600">Aquí se mostrarán los resultados de los partidos de la Copa Mundial.</p>
+<div class="max-w-7xl mx-auto px-6 py-12">
+  <!-- Page Header -->
+  <div class="text-center mb-12 select-none">
+    <span
+      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-gold-light text-gold-hover border border-gold-primary/20 mb-4 uppercase tracking-wider">
+      <span class="material-icons text-sm">sports_soccer</span>
+      Encuentros y Resultados
+    </span>
+    <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+      Resultados del Torneo
+    </h1>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+      Consulta los marcadores de los partidos, goleadores y clasificaciones de la Copa Mundial en directo.
+    </p>
+  </div>
+
+  <!-- Filters Section -->
+  <div class="relative z-10 bg-white/80 backdrop-blur-md border border-gray-200/80 shadow-sm rounded-2xl p-6 mb-10">
+    <div class="flex justify-between items-center mb-4 pb-3 border-b border-gray-100/60 select-none">
+      <h2 class="text-sm font-bold text-gray-900 flex items-center gap-1.5">
+        <span class="material-icons text-base text-gold-primary">filter_list</span>
+        Filtrar Partidos
+      </h2>
+      @if (selectedRound() || selectedGroup() || selectedTeam()) {
+        <button (click)="clearAllFilters()"
+          class="text-xs font-semibold text-red-600 hover:text-red-700 hover:underline flex items-center gap-1 focus:outline-none cursor-pointer transition-colors">
+          <span class="material-icons text-sm">filter_alt_off</span>
+          Limpiar filtros
+        </button>
+      }
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Round Filter -->
+      <div class="flex flex-col gap-1.5">
+        <label for="round-filter"
+          class="text-xs font-bold text-gray-400 uppercase tracking-wider select-none">Ronda</label>
+        <select id="round-filter" [value]="selectedRound()" (change)="onRoundChange($event)"
+          class="block w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-gray-950 bg-white focus:outline-none focus:ring-2 focus:ring-gold-primary focus:border-gold-primary text-sm transition-all">
+          @for (opt of roundOptions; track opt.value) {
+          <option [value]="opt.value">{{ opt.label }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- Group Filter -->
+      <div class="flex flex-col gap-1.5">
+        <label for="group-filter"
+          class="text-xs font-bold text-gray-400 uppercase tracking-wider select-none">Grupo</label>
+        <select id="group-filter" [value]="selectedGroup()" (change)="onGroupChange($event)"
+          class="block w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-gray-950 bg-white focus:outline-none focus:ring-2 focus:ring-gold-primary focus:border-gold-primary text-sm transition-all">
+          @for (opt of groupOptions; track opt.value) {
+          <option [value]="opt.value">{{ opt.label }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- Team Filter (Autocomplete) -->
+      <div class="flex flex-col gap-1.5 relative">
+        <label for="team-filter"
+          class="text-xs font-bold text-gray-400 uppercase tracking-wider select-none">Equipo</label>
+        <div class="relative">
+          <input id="team-filter" type="text" [value]="teamSearchQuery()" (input)="onTeamSearchChange($event)"
+            (focus)="showSuggestions.set(true)" (blur)="onTeamSearchBlur()" placeholder="Buscar por equipo..."
+            autocomplete="off"
+            class="block w-full pl-3.5 pr-10 py-2.5 border border-gray-300 rounded-xl text-gray-950 bg-white focus:outline-none focus:ring-2 focus:ring-gold-primary focus:border-gold-primary text-sm transition-all" />
+
+          <!-- Clear or Search Icon -->
+          @if (selectedTeam() || teamSearchQuery()) {
+          <button (click)="clearTeamFilter()" type="button" aria-label="Limpiar filtro de equipo"
+            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none cursor-pointer flex items-center justify-center">
+            <span class="material-icons text-lg">close</span>
+          </button>
+          } @else {
+          <span
+            class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 material-icons text-lg select-none">search</span>
+          }
+        </div>
+
+        <!-- Autocomplete Suggestions Dropdown -->
+        @if (showSuggestions() && suggestedTeams().length > 0) {
+        <ul role="listbox" aria-label="Sugerencias de equipos"
+          class="absolute z-50 left-0 right-0 top-full mt-2 max-h-60 overflow-y-auto bg-white border border-gray-200/80 rounded-xl shadow-lg divide-y divide-gray-100 focus:outline-none">
+          @for (team of suggestedTeams(); track team.id) {
+          <li role="option" [attr.aria-selected]="selectedTeam()?.id === team.id">
+            <button type="button" (click)="selectTeam(team)"
+              class="w-full flex items-center gap-3 px-4 py-3 text-left text-sm text-gray-950 hover:bg-gold-light/60 transition-colors focus:outline-none cursor-pointer">
+              @if (team.flag !== 'unknown') {
+              <img [src]="'https://flagcdn.com/w40/' + team.flag + '.png'" [alt]="'Bandera de ' + team.name"
+                class="w-5 h-auto rounded border border-gray-200/40 shadow-sm" />
+              } @else {
+              <span class="text-base select-none">🏳️</span>
+              }
+              <span class="font-semibold">{{ team.name }}</span>
+            </button>
+          </li>
+          }
+        </ul>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State (Skeleton Grid) -->
+  @if (isLoading()) {
+  <div class="grid grid-cols-1 gap-6 animate-pulse">
+    @for (item of [1, 2, 3]; track item) {
+    <div class="bg-white/80 border border-gray-200/80 shadow-sm rounded-2xl p-6 flex flex-col gap-4">
+      <div class="h-4 bg-gray-200 rounded w-1/4"></div>
+      <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4 py-2">
+        <div class="h-6 bg-gray-200 rounded w-3/4 ml-auto"></div>
+        <div class="h-8 bg-gray-200 rounded w-16 mx-auto"></div>
+        <div class="h-6 bg-gray-200 rounded w-3/4 mr-auto"></div>
+      </div>
+      <div class="h-4 bg-gray-200 rounded w-1/2 mx-auto mt-2"></div>
+    </div>
+    }
+  </div>
+  } @else if (error()) {
+  <!-- Error State -->
+  <div class="max-w-md mx-auto mt-8 bg-red-50 border border-red-200 rounded-2xl p-8 text-center shadow-sm">
+    <span class="material-icons text-red-500 text-5xl mb-3 select-none">error_outline</span>
+    <h3 class="text-lg font-bold text-gray-900 mb-2">Error de conexión</h3>
+    <p class="text-sm text-gray-600 mb-6">{{ error() }}</p>
+    <button (click)="retryTrigger.update(n => n + 1)"
+      class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-red-600 hover:bg-red-700 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 cursor-pointer">
+      <span class="material-icons text-sm">replay</span>
+      Reintentar
+    </button>
+  </div>
+  } @else {
+  <!-- Fixtures List -->
+  <div class="grid grid-cols-1 gap-6">
+    @for (fixture of fixtures(); track fixture.id) {
+    <div
+      class="bg-white/80 backdrop-blur-md border border-gray-200/80 shadow-sm rounded-2xl p-6 hover:shadow-md hover:border-gold-primary/30 transition-all duration-300 flex flex-col gap-4">
+
+      <!-- Match Info Header -->
+      <div
+        class="flex justify-between items-center text-xs font-semibold text-gray-400 border-b border-gray-100 pb-3 uppercase tracking-wider select-none">
+        <div class="flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-primary"></span>
+          <span>{{ fixture.round }}</span>
+          @if (fixture.homeTeam.group?.name && fixture.round.startsWith('Group Stage')) {
+          <span class="mx-1">•</span>
+          <span>{{ fixture.homeTeam.group.name }}</span>
+          }
+        </div>
+        @if (fixture.stadium) {
+        <div class="flex items-center gap-1">
+          <span class="material-icons text-sm">place</span>
+          <span>{{ fixture.stadium }}, {{ fixture.stadiumCity }}</span>
+        </div>
+        }
+      </div>
+
+      <!-- Main Scores Row -->
+      <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4 py-2">
+        <!-- Home Team (Left) -->
+        <div class="flex items-center justify-end gap-3 md:gap-4 text-right">
+          <span class="text-base md:text-lg font-bold text-gray-900 truncate">{{ fixture.homeTeamName }}</span>
+          @if (fixture.homeTeamFlag !== 'unknown') {
+          <img [src]="'https://flagcdn.com/w40/' + fixture.homeTeamFlag + '.png'"
+            [alt]="'Bandera de ' + fixture.homeTeamName"
+            class="w-8 md:w-10 h-auto rounded border border-gray-200/80 shadow-sm select-none" />
+          } @else {
+          <span class="text-2xl md:text-3xl select-none"
+            [attr.aria-label]="'Bandera de ' + fixture.homeTeamName">🏳️</span>
+          }
+        </div>
+
+        <!-- Result Score (Middle) -->
+        <div class="flex flex-col items-center justify-center min-w-[6rem] px-2">
+          @if (fixture.goalsHome !== null && fixture.goalsAway !== null) {
+          <span class="text-2xl md:text-3xl font-extrabold text-gray-950 tracking-tight">
+            {{ fixture.goalsHome }} - {{ fixture.goalsAway }}
+          </span>
+          @if (hasShootout(fixture)) {
+          <span class="text-xs md:text-sm font-semibold text-gray-500/60 mt-1 select-none tracking-wide">
+            (pen. {{ fixture.penaltiesHome }} - {{ fixture.penaltiesAway }})
+          </span>
+          }
+          } @else {
+          <span
+            class="text-sm font-bold text-gray-400 uppercase tracking-widest bg-gray-50 border border-gray-100 rounded-lg px-3 py-1.5 select-none">
+            vs
+          </span>
+          }
+        </div>
+
+        <!-- Away Team (Right) -->
+        <div class="flex items-center justify-start gap-3 md:gap-4 text-left">
+          @if (fixture.awayTeamFlag !== 'unknown') {
+          <img [src]="'https://flagcdn.com/w40/' + fixture.awayTeamFlag + '.png'"
+            [alt]="'Bandera de ' + fixture.awayTeamName"
+            class="w-8 md:w-10 h-auto rounded border border-gray-200/80 shadow-sm select-none" />
+          } @else {
+          <span class="text-2xl md:text-3xl select-none"
+            [attr.aria-label]="'Bandera de ' + fixture.awayTeamName">🏳️</span>
+          }
+          <span class="text-base md:text-lg font-bold text-gray-900 truncate">{{ fixture.awayTeamName }}</span>
+        </div>
+      </div>
+
+      <!-- Scorers List Row -->
+      @if (fixture.goalsHome !== null && fixture.goalsAway !== null) {
+      @if (getGroupedScorers(fixture, fixture.homeTeamId).length > 0 || getGroupedScorers(fixture,
+      fixture.awayTeamId).length > 0) {
+      <div class="grid grid-cols-2 gap-8 pt-3 border-t border-gray-100/60 text-xs md:text-sm">
+        <!-- Home Scorers (Right-aligned under home team) -->
+        <div class="flex flex-col gap-1.5 text-right items-end justify-start">
+          @for (scorer of getGroupedScorers(fixture, fixture.homeTeamId); track scorer.playerName) {
+          <div class="flex items-center gap-2 text-gray-600">
+            <span class="text-gray-400 font-medium">{{ scorer.minutes }}</span>
+            <span class="font-semibold">{{ scorer.playerName }}</span>
+            <span class="material-icons text-sm text-gray-400 select-none">sports_soccer</span>
+          </div>
+          }
+        </div>
+
+        <!-- Away Scorers (Left-aligned under away team) -->
+        <div class="flex flex-col gap-1.5 text-left items-start justify-start">
+          @for (scorer of getGroupedScorers(fixture, fixture.awayTeamId); track scorer.playerName) {
+          <div class="flex items-center gap-2 text-gray-600">
+            <span class="material-icons text-sm text-gray-400 select-none">sports_soccer</span>
+            <span class="font-semibold">{{ scorer.playerName }}</span>
+            <span class="text-gray-400 font-medium">{{ scorer.minutes }}</span>
+          </div>
+          }
+        </div>
+      </div>
+      }
+      }
+
+      <!-- Card Footer / Actions -->
+      <div class="mt-4 pt-3 border-t border-gray-100/60 flex justify-end">
+        <a [routerLink]="['/results', fixture.id, 'comments']"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 bg-gray-50 border border-gray-200/60 hover:bg-gold-light hover:text-gold-hover hover:border-gold-primary/30 transition-all focus:outline-none focus:ring-2 focus:ring-gold-primary cursor-pointer select-none">
+          <span class="material-icons text-sm">chat_bubble_outline</span>
+          <span>Comentarios</span>
+        </a>
+      </div>
+    </div>
+    } @empty {
+    <!-- Empty State -->
+    <div class="bg-white/80 border border-gray-200/80 shadow-sm rounded-2xl p-12 text-center select-none">
+      <span class="material-icons text-gray-300 text-6xl mb-3">sports_soccer</span>
+      <h3 class="text-lg font-bold text-gray-900 mb-1">No se encontraron resultados</h3>
+      <p class="text-sm text-gray-500 max-w-sm mx-auto">
+        No hay partidos programados o jugados para los filtros seleccionados. Intente cambiar la ronda, el grupo o el
+        equipo.
+      </p>
+    </div>
+    }
+  </div>
+  }
 </div>

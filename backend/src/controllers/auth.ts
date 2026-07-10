@@ -13,22 +13,27 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   register = async (req: Request, res: Response): Promise<void> => {
-    const { email, password } = res.locals.parsed.body;
-    const user = await this.authService.registerUser(email, password);
+    const { email, username, password } = res.locals.parsed.body;
+    const user = await this.authService.registerUser(email, username, password);
     res.status(201).json(user);
   };
 
   login = async (req: Request, res: Response): Promise<void> => {
-    const { email, password } = res.locals.parsed.body;
-    const user = await this.authService.loginUser(email, password);
+    const { email, username, password } = res.locals.parsed.body;
+    const identifier = email || username;
+    const user = await this.authService.loginUser(identifier, password);
 
     const accessToken = this.authService.generateAccessToken({
       userId: user.id,
       email: user.email,
+      username: user.username,
+      role: user.role,
     });
     const refreshToken = this.authService.generateRefreshToken({
       userId: user.id,
       email: user.email,
+      username: user.username,
+      role: user.role,
     });
 
     await this.authService.saveRefreshToken(user.id, refreshToken);
@@ -85,10 +90,14 @@ export class AuthController {
     const newAccessToken = this.authService.generateAccessToken({
       userId: user.id,
       email: user.email,
+      username: user.username,
+      role: user.role,
     });
     const newRefreshToken = this.authService.generateRefreshToken({
       userId: user.id,
       email: user.email,
+      username: user.username,
+      role: user.role,
     });
 
     await this.authService.revokeRefreshToken(refreshToken);
@@ -109,5 +118,9 @@ export class AuthController {
     });
 
     res.status(200).json({ message: "Tokens refreshed successfully" });
+  };
+
+  adminOnly = (req: Request, res: Response): void => {
+    res.status(200).json({ message: "Welcome, admin" });
   };
 }

@@ -6,7 +6,6 @@ import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
-  standalone: true,
   imports: [FormField, RouterLink],
   templateUrl: './register.component.html'
 })
@@ -16,6 +15,7 @@ export class RegisterComponent {
 
   protected readonly registerModel = signal({
     email: '',
+    username: '',
     password: '',
     confirmPassword: ''
   });
@@ -23,6 +23,8 @@ export class RegisterComponent {
   protected readonly registerForm = form(this.registerModel, (s) => {
     required(s.email, { message: 'El correo electrónico es obligatorio' });
     email(s.email, { message: 'El correo electrónico no es válido' });
+    required(s.username, { message: 'El nombre de usuario es obligatorio' });
+    minLength(s.username, 3, { message: 'El nombre de usuario debe tener al menos 3 caracteres' });
     required(s.password, { message: 'La contraseña es obligatoria' });
     minLength(s.password, 8, { message: 'La contraseña debe tener al menos 8 caracteres' });
     required(s.confirmPassword, { message: 'Por favor, repita la contraseña' });
@@ -39,9 +41,9 @@ export class RegisterComponent {
   protected onSubmit(): void {
     submit(this.registerForm, async () => {
       this.errorMessage.set(null);
-      const { email, password } = this.registerModel();
+      const { email, username, password } = this.registerModel();
       try {
-        await firstValueFrom(this.authService.register(email, password));
+        await firstValueFrom(this.authService.register(email, username, password));
         this.router.navigate(['/login'], { queryParams: { registered: 'true' } });
       } catch (err: any) {
         const errMsg = err.error?.message || 'Error al registrarse. Por favor, inténtelo de nuevo.';

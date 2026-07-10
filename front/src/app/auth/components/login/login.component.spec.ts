@@ -33,8 +33,8 @@ describe('LoginComponent', () => {
     expect(component['loginForm']().invalid()).toBe(true);
   });
 
-  it('should be valid when email and password are provided', () => {
-    component['loginModel'].set({ email: 'test@example.com', password: 'password' });
+  it('should be valid when identifier and password are provided', () => {
+    component['loginModel'].set({ identifier: 'test@example.com', password: 'password' });
     fixture.detectChanges();
     expect(component['loginForm']().valid()).toBe(true);
   });

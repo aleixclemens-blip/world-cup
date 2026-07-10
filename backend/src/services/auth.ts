@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import { Repository } from "typeorm";
-import { User } from "../entities/User";
+import { User, UserRole } from "../entities/User";
 import { RefreshToken } from "../entities/RefreshToken";
 import { config } from "../config";
 import { ConflictError, UnauthorizedError } from "../lib/errors";
@@ -10,16 +10,19 @@ import { ConflictError, UnauthorizedError } from "../lib/errors";
 export interface UserAuthResult {
   id: number;
   email: string;
+  username: string;
+  role: UserRole;
 }
 
 export class AuthService {
   constructor(
     private userRepository: Repository<User>,
     private tokenRepository: Repository<RefreshToken>,
-  ) {}
+  ) { }
 
   async registerUser(
     email: string,
+    username: string,
     passwordPlain: string,
   ): Promise<UserAuthResult> {
     const existing = await this.userRepository.findOne({ where: { email } });
@@ -27,11 +30,17 @@ export class AuthService {
       throw new ConflictError("User with this email already exists");
     }
 
+    const existingUsername = await this.userRepository.findOne({ where: { username } });
+    if (existingUsername) {
+      throw new ConflictError("User with this username already exists");
+    }
+
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(passwordPlain, saltRounds);
 
     const user = new User();
     user.email = email;
+    user.username = username;
     user.password = hashedPassword;
 
     const savedUser = await this.userRepository.save(user);
@@ -39,14 +48,21 @@ export class AuthService {
     return {
       id: savedUser.id,
       email: savedUser.email,
+      username: savedUser.username,
+      role: savedUser.role,
     };
   }
 
   async loginUser(
-    email: string,
+    identifier: string,
     passwordPlain: string,
   ): Promise<UserAuthResult> {
-    const user = await this.userRepository.findOne({ where: { email } });
+    const user = await this.userRepository.findOne({
+      where: [
+        { email: identifier },
+        { username: identifier }
+      ]
+    });
     if (!user) {
       throw new UnauthorizedError("Invalid email or password");
     }
@@ -59,6 +75,8 @@ export class AuthService {
     return {
       id: user.id,
       email: user.email,
+      username: user.username,
+      role: user.role,
     };
   }
 
@@ -85,15 +103,17 @@ export class AuthService {
     }
   }
 
-  generateAccessToken(payload: { userId: number; email: string }): string {
+  generateAccessToken(payload: { userId: number; email: string; username: string; role: UserRole }): string {
     return jwt.sign(payload, config.JWT_ACCESS_SECRET, {
-      expiresIn: this.parseExpiryToSeconds(config.ACCESES_TOKEN_EXPIRE),
+      algorithm: "HS256",
+      expiresIn: this.parseExpiryToSeconds(config.ACCESES_TOKEN_EXPIRE)
     });
   }
 
-  generateRefreshToken(payload: { userId: number; email: string }): string {
+  generateRefreshToken(payload: { userId: number; email: string; username: string; role: UserRole }): string {
     return jwt.sign(payload, config.JWT_REFRESH_SECRET, {
-      expiresIn: this.parseExpiryToSeconds(config.REFRESH_TOKEN_EXPIRE),
+      algorithm: "HS256",
+      expiresIn: this.parseExpiryToSeconds(config.REFRESH_TOKEN_EXPIRE)
     });
   }
 
@@ -115,7 +135,7 @@ export class AuthService {
   }
 
   async verifyRefreshToken(token: string): Promise<UserAuthResult> {
-    let decoded: { userId: number; email: string; exp: number };
+    let decoded: { userId: number; email: string; username: string; role: UserRole; exp: number };
     try {
       decoded = jwt.verify(token, config.JWT_REFRESH_SECRET) as typeof decoded;
     } catch {
@@ -141,6 +161,8 @@ export class AuthService {
     return {
       id: decoded.userId,
       email: decoded.email,
+      username: decoded.username,
+      role: decoded.role,
     };
   }
 

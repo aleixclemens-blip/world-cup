@@ -1,7 +1,8 @@
-import { Component, signal, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, signal, inject, computed, linkedSignal } from '@angular/core';
 import { Router } from '@angular/router';
-import { firstValueFrom, Subject, Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { of, forkJoin, firstValueFrom } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 import { TeamsService } from './services/teams.service';
 import { Team } from './types/teams.types';
 import { AuthService } from '../auth/services/auth.service';
@@ -11,73 +12,72 @@ import { AuthService } from '../auth/services/auth.service';
   imports: [],
   templateUrl: './teams.component.html'
 })
-export class TeamsComponent implements OnInit, OnDestroy {
+export class TeamsComponent {
   private readonly teamsService = inject(TeamsService);
   protected readonly authService = inject(AuthService);
   private readonly router = inject(Router);
 
-  protected readonly teams = signal<Team[]>([]);
   protected readonly isLoading = signal<boolean>(true);
   protected readonly error = signal<string | null>(null);
   protected readonly searchQuery = signal<string>('');
+  protected readonly retryTrigger = signal<number>(0);
 
-  private readonly searchSubject = new Subject<string>();
-  private searchSubscription?: Subscription;
+  // Combine searchQuery and retryTrigger
+  private readonly queryTrigger = computed(() => ({
+    query: this.searchQuery(),
+    retry: this.retryTrigger()
+  }));
 
-  public ngOnInit(): void {
-    this.loadTeams();
-    this.searchSubscription = this.searchSubject.pipe(
+  // Loaded teams stream triggered automatically when queryTrigger changes
+  private readonly loadedTeams = toSignal(
+    toObservable(this.queryTrigger).pipe(
       debounceTime(300),
-      distinctUntilChanged()
-    ).subscribe(() => {
-      this.loadTeams();
-    });
-  }
+      distinctUntilChanged((a, b) => a.query === b.query && a.retry === b.retry),
+      tap(() => {
+        this.isLoading.set(true);
+        this.error.set(null);
+      }),
+      switchMap((trigger) =>
+        forkJoin({
+          teamsData: this.teamsService.getTeams(trigger.query),
+          favoritesData: this.authService.isAuthenticated()
+            ? this.teamsService.getFavoriteTeams().pipe(catchError(() => of([])))
+            : of([])
+        }).pipe(
+          map(({ teamsData, favoritesData }) => {
+            const favoriteIds = new Set(favoritesData.map((t) => t.id));
+            return teamsData.map((team) => ({
+              ...team,
+              isFavorite: favoriteIds.has(team.id),
+              isFavoriteLoading: false
+            }));
+          }),
+          catchError((err) => {
+            console.error('Error fetching teams:', err);
+            this.error.set('No se pudieron cargar las selecciones. Por favor, inténtelo de nuevo.');
+            return of([]);
+          })
+        )
+      ),
+      tap(() => this.isLoading.set(false))
+    ),
+    { initialValue: [] }
+  );
 
-  public ngOnDestroy(): void {
-    this.searchSubscription?.unsubscribe();
-  }
-
-  protected async loadTeams(): Promise<void> {
-    this.isLoading.set(true);
-    this.error.set(null);
-    try {
-      const teamsData = await firstValueFrom(this.teamsService.getTeams(this.searchQuery()));
-      
-      let favoriteIds = new Set<number>();
-      if (this.authService.isAuthenticated()) {
-        try {
-          const favoritesData = await firstValueFrom(this.teamsService.getFavoriteTeams());
-          favoriteIds = new Set(favoritesData.map((t) => t.id));
-        } catch (favErr) {
-          console.error('Error fetching favorite teams:', favErr);
-        }
-      }
-
-      const mergedTeams = teamsData.map((team) => ({
-        ...team,
-        isFavorite: favoriteIds.has(team.id),
-        isFavoriteLoading: false
-      }));
-
-      this.teams.set(mergedTeams);
-    } catch (err) {
-      console.error('Error fetching teams:', err);
-      this.error.set('No se pudieron cargar las selecciones. Por favor, inténtelo de nuevo.');
-    } finally {
-      this.isLoading.set(false);
-    }
-  }
+  // Writable linked signal initialized with loadedTeams to allow local favorite updates
+  protected readonly teams = linkedSignal<Team[]>(() => this.loadedTeams());
 
   protected onSearchChange(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
     this.searchQuery.set(value);
-    this.searchSubject.next(value);
   }
 
   protected clearSearch(): void {
     this.searchQuery.set('');
-    this.searchSubject.next('');
+  }
+
+  protected viewTeamDetail(teamId: number): void {
+    this.router.navigate(['/teams', teamId]);
   }
 
   protected async toggleFavorite(team: Team): Promise<void> {

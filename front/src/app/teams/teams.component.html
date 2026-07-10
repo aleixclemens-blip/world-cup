@@ -75,7 +75,7 @@
     <span class="material-icons text-red-500 text-5xl mb-3">error_outline</span>
     <h3 class="text-lg font-bold text-gray-900 mb-2">Error de conexión</h3>
     <p class="text-sm text-gray-600 mb-6">{{ error() }}</p>
-    <button (click)="loadTeams()"
+    <button (click)="retryTrigger.update(n => n + 1)"
       class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-red-600 hover:bg-red-700 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
       <span class="material-icons text-sm">replay</span>
       Reintentar
@@ -100,7 +100,8 @@
       <div class="divide-y divide-gray-100">
         @for (team of teams(); track team.id) {
         <div
-          class="grid grid-cols-[4rem_1.5fr_2fr_1.5fr_1fr_4rem] gap-4 items-center px-6 py-5 text-sm hover:bg-gray-50/50 transition-colors duration-150">
+          (click)="viewTeamDetail(team.id)"
+          class="grid grid-cols-[4rem_1.5fr_2fr_1.5fr_1fr_4rem] gap-4 items-center px-6 py-5 text-sm hover:bg-gray-50/50 transition-colors duration-150 cursor-pointer">
           
           <!-- Flag Column -->
           <div class="flex justify-center">
@@ -160,7 +161,7 @@
           <div class="flex justify-center">
             <button
               type="button"
-              (click)="toggleFavorite(team)"
+              (click)="$event.stopPropagation(); toggleFavorite(team)"
               [disabled]="team.isFavoriteLoading"
               class="flex items-center justify-center p-1.5 rounded-full hover:bg-gray-100/80 text-gray-400 hover:text-gold-primary disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-gray-400 transition-colors cursor-pointer"
               [class.text-gold-primary]="team.isFavorite"

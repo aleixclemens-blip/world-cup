@@ -16,4 +16,19 @@ export const GetFixturesSchema = z.object({
   params: z.object({}).strict().optional(),
 });
 
+export const GetFixtureByIdSchema = z.object({
+  params: z
+    .object({
+      id: z
+        .string()
+        .regex(/^\d+$/)
+        .transform((val) => parseInt(val, 10)),
+    })
+    .strict(),
+  body: z.object({}).strict().optional(),
+  query: z.object({}).strict().optional(),
+});
+
 export type GetFixtures = z.infer<typeof GetFixturesSchema>;
+export type GetFixtureById = z.infer<typeof GetFixtureByIdSchema>;
+

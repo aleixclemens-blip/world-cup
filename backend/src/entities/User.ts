@@ -10,6 +10,8 @@ import {
 } from "typeorm";
 import { Team } from "./Team";
 
+export type UserRole = "user" | "admin";
+
 @Entity({ name: "USERS" })
 export class User {
   @PrimaryGeneratedColumn({ name: "id" })
@@ -19,8 +21,15 @@ export class User {
   @Column({ name: "email", type: "varchar", length: 150 })
   email!: string;
 
+  @Index({ unique: true })
+  @Column({ name: "username", type: "varchar", length: 150 })
+  username!: string;
+
   @Column({ name: "password", type: "varchar", length: 255 })
   password!: string;
+
+  @Column({ name: "role", type: "enum", enum: ["user", "admin"], default: "user" })
+  role!: "user" | "admin";
 
   @CreateDateColumn({ name: "created_at", type: "timestamp" })
   createdAt!: Date;

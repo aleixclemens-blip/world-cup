@@ -40,7 +40,7 @@ describe('AuthService', () => {
   });
 
   it('should fetch user info on initialize() success', async () => {
-    const mockUser = { id: 1, email: 'test@example.com' };
+    const mockUser = { id: 1, email: 'test@example.com', username: 'testuser', role: 'user' as const };
     const initPromise = service.initialize();
 
     const req = httpTestingController.expectOne(`${API_URL}/auth/me`);
@@ -67,8 +67,8 @@ describe('AuthService', () => {
   });
 
   it('should update state to true on login()', () => {
-    const mockUser = { id: 1, email: 'test@example.com' };
-    service.login('test@example.com', 'password').subscribe((user) => {
+    const mockUser = { id: 1, email: 'test@example.com', username: 'testuser', role: 'user' as const };
+    service.login({ email: 'test@example.com', password: 'password' }).subscribe((user) => {
       expect(user).toEqual(mockUser);
     });
 
@@ -82,12 +82,12 @@ describe('AuthService', () => {
   });
 
   it('should call register endpoint on register()', () => {
-    service.register('test@example.com', 'password').subscribe();
+    service.register('test@example.com', 'testuser', 'password').subscribe();
 
     const req = httpTestingController.expectOne(`${API_URL}/auth/register`);
     expect(req.request.method).toBe('POST');
-    expect(req.request.body).toEqual({ email: 'test@example.com', password: 'password' });
-    req.flush({ id: 1, email: 'test@example.com' });
+    expect(req.request.body).toEqual({ email: 'test@example.com', username: 'testuser', password: 'password' });
+    req.flush({ id: 1, email: 'test@example.com', username: 'testuser', role: 'user' });
   });
 
   it('should call refresh endpoint on refresh()', () => {
@@ -102,8 +102,8 @@ describe('AuthService', () => {
     const navigateSpy = vi.spyOn(router, 'navigate');
 
     // login first
-    service.login('test@example.com', 'password').subscribe();
-    httpTestingController.expectOne(`${API_URL}/auth/login`).flush({ id: 1, email: 'test@example.com' });
+    service.login({ email: 'test@example.com', password: 'password' }).subscribe();
+    httpTestingController.expectOne(`${API_URL}/auth/login`).flush({ id: 1, email: 'test@example.com', username: 'testuser', role: 'user' });
     expect(service.isAuthenticated()).toBe(true);
 
     service.logout();

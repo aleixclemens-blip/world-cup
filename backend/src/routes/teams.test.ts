@@ -113,7 +113,7 @@ describe("Teams Endpoints", () => {
       // Register and login
       await request(app)
         .post("/auth/register")
-        .send({ email: testEmail, password: testPassword });
+        .send({ email: testEmail, username: "favtestuser", password: testPassword });
 
       const loginRes = await request(app)
         .post("/auth/login")

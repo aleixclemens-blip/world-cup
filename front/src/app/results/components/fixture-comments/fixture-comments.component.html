@@ -1,0 +1,250 @@
+<div class="max-w-4xl mx-auto px-6 py-12">
+  <!-- Back Button / Navigation -->
+  <div class="mb-6">
+    <a routerLink="/results"
+       class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-gray-700 bg-white border border-gray-200 hover:bg-gold-light hover:text-gold-hover hover:border-gold-primary/30 transition-all focus:outline-none focus:ring-2 focus:ring-gold-primary cursor-pointer select-none">
+      <span class="material-icons text-sm">arrow_back</span>
+      <span>Volver a Resultados</span>
+    </a>
+  </div>
+
+  @if (isLoading()) {
+    <!-- Skeleton loader -->
+    <div class="animate-pulse flex flex-col gap-6">
+      <div class="bg-white border border-gray-200 shadow-sm rounded-2xl p-6 h-48"></div>
+      <div class="bg-white border border-gray-200 shadow-sm rounded-2xl p-6 h-64"></div>
+    </div>
+  } @else if (error()) {
+    <!-- Error State -->
+    <div class="bg-red-50 border border-red-200 rounded-2xl p-8 text-center shadow-sm">
+      <span class="material-icons text-red-500 text-5xl mb-3 select-none">error_outline</span>
+      <h3 class="text-lg font-bold text-gray-900 mb-2">Error</h3>
+      <p class="text-sm text-gray-600">{{ error() }}</p>
+    </div>
+  } @else if (fixture()) {
+    @let match = fixture()!;
+    <div class="flex flex-col gap-8">
+      
+      <!-- Match Info Card (Reused Premium Layout) -->
+      <div class="bg-white/80 backdrop-blur-md border border-gray-200/80 shadow-sm rounded-2xl p-6 flex flex-col gap-4">
+        
+        <!-- Match Info Header -->
+        <div class="flex justify-between items-center text-xs font-semibold text-gray-400 border-b border-gray-100 pb-3 uppercase tracking-wider select-none">
+          <div class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold-primary"></span>
+            <span>{{ match.round }}</span>
+            @if (match.homeTeam.group?.name && match.round.startsWith('Group Stage')) {
+              <span class="mx-1">•</span>
+              <span>{{ match.homeTeam.group.name }}</span>
+            }
+          </div>
+          @if (match.stadium) {
+            <div class="flex items-center gap-1">
+              <span class="material-icons text-sm">place</span>
+              <span>{{ match.stadium }}, {{ match.stadiumCity }}</span>
+            </div>
+          }
+        </div>
+
+        <!-- Main Scores Row -->
+        <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4 py-2">
+          <!-- Home Team (Left) -->
+          <div class="flex items-center justify-end gap-3 md:gap-4 text-right">
+            <span class="text-base md:text-lg font-bold text-gray-900 truncate">{{ match.homeTeamName }}</span>
+            @if (match.homeTeamFlag !== 'unknown') {
+              <img [src]="'https://flagcdn.com/w40/' + match.homeTeamFlag + '.png'"
+                   [alt]="'Bandera de ' + match.homeTeamName"
+                   class="w-8 md:w-10 h-auto rounded border border-gray-200/80 shadow-sm select-none" />
+            } @else {
+              <span class="text-2xl md:text-3xl select-none"
+                    [attr.aria-label]="'Bandera de ' + match.homeTeamName">🏳️</span>
+            }
+          </div>
+
+          <!-- Result Score (Middle) -->
+          <div class="flex flex-col items-center justify-center min-w-[6rem] px-2">
+            @if (match.goalsHome !== null && match.goalsAway !== null) {
+              <span class="text-2xl md:text-3xl font-extrabold text-gray-950 tracking-tight">
+                {{ match.goalsHome }} - {{ match.goalsAway }}
+              </span>
+              @if (hasShootout(match)) {
+                <span class="text-xs md:text-sm font-semibold text-gray-500/60 mt-1 select-none tracking-wide">
+                  (pen. {{ match.penaltiesHome }} - {{ match.penaltiesAway }})
+                </span>
+              }
+            } @else {
+              <span class="text-sm font-bold text-gray-400 uppercase tracking-widest bg-gray-50 border border-gray-100 rounded-lg px-3 py-1.5 select-none">
+                vs
+              </span>
+            }
+          </div>
+
+          <!-- Away Team (Right) -->
+          <div class="flex items-center justify-start gap-3 md:gap-4 text-left">
+            @if (match.awayTeamFlag !== 'unknown') {
+              <img [src]="'https://flagcdn.com/w40/' + match.awayTeamFlag + '.png'"
+                   [alt]="'Bandera de ' + match.awayTeamName"
+                   class="w-8 md:w-10 h-auto rounded border border-gray-200/80 shadow-sm select-none" />
+            } @else {
+              <span class="text-2xl md:text-3xl select-none"
+                    [attr.aria-label]="'Bandera de ' + match.awayTeamName">🏳️</span>
+            }
+            <span class="text-base md:text-lg font-bold text-gray-900 truncate">{{ match.awayTeamName }}</span>
+          </div>
+        </div>
+
+        <!-- Scorers List Row -->
+        @if (match.goalsHome !== null && match.goalsAway !== null) {
+          @if (getGroupedScorers(match, match.homeTeamId).length > 0 || getGroupedScorers(match, match.awayTeamId).length > 0) {
+            <div class="grid grid-cols-2 gap-8 pt-3 border-t border-gray-100/60 text-xs md:text-sm">
+              <!-- Home Scorers -->
+              <div class="flex flex-col gap-1.5 text-right items-end justify-start">
+                @for (scorer of getGroupedScorers(match, match.homeTeamId); track scorer.playerName) {
+                  <div class="flex items-center gap-2 text-gray-600">
+                    <span class="text-gray-400 font-medium">{{ scorer.minutes }}</span>
+                    <span class="font-semibold">{{ scorer.playerName }}</span>
+                    <span class="material-icons text-sm text-gray-400 select-none">sports_soccer</span>
+                  </div>
+                }
+              </div>
+
+              <!-- Away Scorers -->
+              <div class="flex flex-col gap-1.5 text-left items-start justify-start">
+                @for (scorer of getGroupedScorers(match, match.awayTeamId); track scorer.playerName) {
+                  <div class="flex items-center gap-2 text-gray-600">
+                    <span class="material-icons text-sm text-gray-400 select-none">sports_soccer</span>
+                    <span class="font-semibold">{{ scorer.playerName }}</span>
+                    <span class="text-gray-400 font-medium">{{ scorer.minutes }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        }
+      </div>
+
+      <!-- Comments Section Container -->
+      <div class="bg-white border border-gray-200/80 shadow-sm rounded-2xl p-6 md:p-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+          <span class="material-icons text-gold-primary">chat_bubble</span>
+          <span>Comentarios ({{ comments().length }})</span>
+        </h2>
+
+        <!-- Submit Comment Form (Authenticated users only) -->
+        @if (authService.isAuthenticated()) {
+          <div class="mb-8 pb-6 border-b border-gray-100">
+            <form (submit)="onSubmitComment(); $event.preventDefault()" class="flex flex-col gap-4">
+              
+              @if (submitError()) {
+                <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg flex items-center gap-3">
+                  <span class="material-icons text-red-500 select-none">error</span>
+                  <span class="text-sm text-red-700 font-medium">{{ submitError() }}</span>
+                </div>
+              }
+
+              <div>
+                <label for="comment-textarea" class="sr-only">Escribe un comentario</label>
+                <textarea
+                  id="comment-textarea"
+                  placeholder="Comparte tu opinión sobre el partido..."
+                  rows="3"
+                  [formField]="commentForm.content"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-950 focus:outline-none focus:ring-2 focus:ring-gold-primary focus:border-gold-primary text-sm transition-all resize-none disabled:bg-gray-50 disabled:text-gray-400"
+                ></textarea>
+
+                <div class="flex justify-between items-center mt-2">
+                  <!-- Error Display -->
+                  <div>
+                    @if (commentForm.content().touched() && commentForm.content().errors().length) {
+                      <p class="text-xs text-red-600 font-medium">
+                        {{ commentForm.content().errors()[0].message }}
+                      </p>
+                    }
+                  </div>
+                  <!-- Character Count -->
+                  <span class="text-xs text-gray-400">
+                    {{ commentModel().content.length }}/1000
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex justify-end">
+                <button
+                  type="submit"
+                  [disabled]="commentForm().invalid() || isSubmitting()"
+                  class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gold-primary hover:bg-gold-hover disabled:bg-gray-200 disabled:text-gray-400 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-gold-primary focus:ring-offset-2 cursor-pointer disabled:cursor-not-allowed select-none"
+                >
+                  @if (isSubmitting()) {
+                    <span class="animate-spin material-icons text-sm">sync</span>
+                    <span>Enviando...</span>
+                  } @else {
+                    <span class="material-icons text-sm">send</span>
+                    <span>Enviar comentario</span>
+                  }
+                </button>
+              </div>
+            </form>
+          </div>
+        } @else {
+          <!-- Lock/Login Alert -->
+          <div class="mb-8 p-4 bg-gold-light/40 border border-gold-primary/20 rounded-xl flex items-center justify-between gap-4 select-none">
+            <div class="flex items-center gap-3">
+              <span class="material-icons text-gold-hover">lock</span>
+              <span class="text-sm font-medium text-gray-800">Inicia sesión para participar en la conversación.</span>
+            </div>
+            <a routerLink="/login"
+               class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gold-primary hover:bg-gold-hover text-white text-xs font-bold rounded-lg transition-colors focus:outline-none">
+              <span class="material-icons text-xs">login</span>
+              <span>Iniciar sesión</span>
+            </a>
+          </div>
+        }
+
+        <!-- Comments List -->
+        <div class="space-y-6">
+          @for (comment of comments(); track comment.id) {
+            <div class="flex gap-4 group">
+              <!-- User Initials Avatar -->
+              <div class="flex-shrink-0">
+                <div class="w-10 h-10 rounded-full bg-gold-light/60 border border-gold-primary/20 flex items-center justify-center font-bold text-sm text-gold-hover select-none">
+                  {{ comment.user.username.substring(0, 2).toUpperCase() }}
+                </div>
+              </div>
+
+              <!-- Comment Body -->
+              <div class="flex-grow bg-gray-50/70 border border-gray-100 rounded-2xl p-4 transition-all hover:bg-gray-50">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="flex items-baseline gap-2">
+                    <span class="font-bold text-gray-900 text-sm">{{ comment.user.username }}</span>
+                    <span class="text-xs text-gray-400 select-none">{{ comment.createdAt | date: 'medium' }}</span>
+                  </div>
+
+                  <!-- Delete Comment (Owner or Moderator/Admin) -->
+                  @if (canDelete(comment)) {
+                    <button
+                      (click)="onDeleteComment(comment.id)"
+                      type="button"
+                      aria-label="Eliminar comentario"
+                      class="text-gray-400 hover:text-red-600 transition-colors cursor-pointer select-none opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none"
+                    >
+                      <span class="material-icons text-lg">delete_outline</span>
+                    </button>
+                  }
+                </div>
+                <p class="text-sm text-gray-850 leading-relaxed whitespace-pre-wrap font-medium">{{ comment.content }}</p>
+              </div>
+            </div>
+          } @empty {
+            <!-- Empty Comments State -->
+            <div class="text-center py-12 select-none">
+              <span class="material-icons text-gray-300 text-5xl mb-2">chat_bubble_outline</span>
+              <p class="text-gray-500 font-medium">Aún no hay comentarios en este partido.</p>
+              <p class="text-xs text-gray-400">¡Sé el primero en compartir tu opinión!</p>
+            </div>
+          }
+        </div>
+
+      </div>
+    </div>
+  }
+</div>
