@@ -16,7 +16,7 @@ afterAll(async () => {
 
 describe("GET /health", () => {
   it("should return 200 with status UP", async () => {
-    const res = await request(app).get("/health");
+    const res = await request(app).get("/api/health");
     expect(res.status).toBe(200);
     expect(res.body).toHaveProperty("status", "UP");
     expect(res.body).toHaveProperty("database", "UP");
@@ -25,7 +25,7 @@ describe("GET /health", () => {
   });
 
   it("should return 404 for non-existent route", async () => {
-    const res = await request(app).get("/non-existent-route");
+    const res = await request(app).get("/api/non-existent-route");
     expect(res.status).toBe(404);
     expect(res.body).toHaveProperty("error", "NotFoundError");
   });

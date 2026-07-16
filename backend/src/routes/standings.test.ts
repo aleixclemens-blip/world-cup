@@ -104,7 +104,7 @@ describe("Standings Endpoints", () => {
       st2.goalsAgainst = 2;
       await standingRepo.save(st2);
 
-      const res = await request(app).get("/standings");
+      const res = await request(app).get("/api/standings");
 
       expect(res.status).toBe(200);
       expect(Array.isArray(res.body)).toBe(true);
@@ -144,7 +144,7 @@ describe("Standings Endpoints", () => {
       st2.goalsAgainst = 3;
       await standingRepo.save(st2);
 
-      const res = await request(app).get("/standings");
+      const res = await request(app).get("/api/standings");
 
       expect(res.status).toBe(200);
       const filtered = res.body.filter((s: any) => s.group === "Group Y");
@@ -182,7 +182,7 @@ describe("Standings Endpoints", () => {
       st2.goalsAgainst = 2;
       await standingRepo.save(st2);
 
-      const res = await request(app).get("/standings");
+      const res = await request(app).get("/api/standings");
 
       expect(res.status).toBe(200);
       const filtered = res.body.filter((s: any) => s.group === "Group Z");

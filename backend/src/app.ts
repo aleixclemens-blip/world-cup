@@ -37,7 +37,7 @@ app.use(httpLogger);
 app.use(express.json({ limit: "100kb" }));
 app.use(cookieParser());
 
-app.use(routes);
+app.use("/api", routes);
 
 app.use(notFoundHandler);
 

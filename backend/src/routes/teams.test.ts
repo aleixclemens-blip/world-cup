@@ -57,7 +57,7 @@ describe("Teams Endpoints", () => {
 
   describe("GET /teams", () => {
     it("should return all teams along with their group information", async () => {
-      const res = await request(app).get("/teams");
+      const res = await request(app).get("/api/teams");
 
       expect(res.status).toBe(200);
       expect(Array.isArray(res.body)).toBe(true);
@@ -70,7 +70,7 @@ describe("Teams Endpoints", () => {
     });
 
     it("should filter teams by name (partial match)", async () => {
-      const res = await request(app).get("/teams?name=Team A");
+      const res = await request(app).get("/api/teams?name=Team A");
 
       expect(res.status).toBe(200);
       expect(Array.isArray(res.body)).toBe(true);
@@ -78,7 +78,7 @@ describe("Teams Endpoints", () => {
     });
 
     it("should filter teams by name case-insensitively", async () => {
-      const res = await request(app).get("/teams?name=team a");
+      const res = await request(app).get("/api/teams?name=team a");
 
       expect(res.status).toBe(200);
       expect(Array.isArray(res.body)).toBe(true);
@@ -86,7 +86,7 @@ describe("Teams Endpoints", () => {
     });
 
     it("should return empty array if no team matches name filter", async () => {
-      const res = await request(app).get("/teams?name=NonExistentTeamName123");
+      const res = await request(app).get("/api/teams?name=NonExistentTeamName123");
 
       expect(res.status).toBe(200);
       expect(Array.isArray(res.body)).toBe(true);
@@ -94,7 +94,7 @@ describe("Teams Endpoints", () => {
     });
 
     it("should return 400 Bad Request when an invalid query parameter is provided", async () => {
-      const res = await request(app).get("/teams?invalidParam=something");
+      const res = await request(app).get("/api/teams?invalidParam=something");
 
       expect(res.status).toBe(400);
       expect(res.body).toHaveProperty("error", "ValidationError");
@@ -112,11 +112,11 @@ describe("Teams Endpoints", () => {
 
       // Register and login
       await request(app)
-        .post("/auth/register")
+        .post("/api/auth/register")
         .send({ email: testEmail, username: "favtestuser", password: testPassword });
 
       const loginRes = await request(app)
-        .post("/auth/login")
+        .post("/api/auth/login")
         .send({ email: testEmail, password: testPassword });
 
       const cookies = loginRes.headers["set-cookie"] as string[] | undefined;
@@ -131,7 +131,7 @@ describe("Teams Endpoints", () => {
     describe("POST /teams/favorites", () => {
       it("should successfully add a favorite team (201)", async () => {
         const res = await request(app)
-          .post("/teams/favorites")
+          .post("/api/teams/favorites")
           .set("Cookie", [accessTokenCookie])
           .send({ teamId: 8899 });
 
@@ -140,7 +140,7 @@ describe("Teams Endpoints", () => {
 
         // Verify it was added
         const getRes = await request(app)
-          .get("/teams/favorites")
+          .get("/api/teams/favorites")
           .set("Cookie", [accessTokenCookie]);
 
         expect(getRes.status).toBe(200);
@@ -151,7 +151,7 @@ describe("Teams Endpoints", () => {
 
       it("should return 400 Bad Request when teamId is invalid", async () => {
         const res = await request(app)
-          .post("/teams/favorites")
+          .post("/api/teams/favorites")
           .set("Cookie", [accessTokenCookie])
           .send({ teamId: "invalid-id" });
 
@@ -161,7 +161,7 @@ describe("Teams Endpoints", () => {
 
       it("should return 401 Unauthorized when token is missing", async () => {
         const res = await request(app)
-          .post("/teams/favorites")
+          .post("/api/teams/favorites")
           .send({ teamId: 8899 });
 
         expect(res.status).toBe(401);
@@ -170,7 +170,7 @@ describe("Teams Endpoints", () => {
 
       it("should return 404 Not Found when team does not exist", async () => {
         const res = await request(app)
-          .post("/teams/favorites")
+          .post("/api/teams/favorites")
           .set("Cookie", [accessTokenCookie])
           .send({ teamId: 99999 });
 
@@ -181,7 +181,7 @@ describe("Teams Endpoints", () => {
 
     describe("GET /teams/favorites", () => {
       it("should return 401 Unauthorized when token is missing", async () => {
-        const res = await request(app).get("/teams/favorites");
+        const res = await request(app).get("/api/teams/favorites");
 
         expect(res.status).toBe(401);
         expect(res.body).toHaveProperty("error", "UnauthorizedError");
@@ -189,7 +189,7 @@ describe("Teams Endpoints", () => {
 
       it("should return empty list when user has no favorites", async () => {
         const res = await request(app)
-          .get("/teams/favorites")
+          .get("/api/teams/favorites")
           .set("Cookie", [accessTokenCookie]);
 
         expect(res.status).toBe(200);
@@ -202,13 +202,13 @@ describe("Teams Endpoints", () => {
       it("should successfully remove a favorite team (200)", async () => {
         // Add first
         await request(app)
-          .post("/teams/favorites")
+          .post("/api/teams/favorites")
           .set("Cookie", [accessTokenCookie])
           .send({ teamId: 8899 });
 
         // Delete
         const res = await request(app)
-          .delete("/teams/favorites")
+          .delete("/api/teams/favorites")
           .set("Cookie", [accessTokenCookie])
           .send({ teamId: 8899 });
 
@@ -217,7 +217,7 @@ describe("Teams Endpoints", () => {
 
         // Verify it was removed
         const getRes = await request(app)
-          .get("/teams/favorites")
+          .get("/api/teams/favorites")
           .set("Cookie", [accessTokenCookie]);
 
         expect(getRes.status).toBe(200);
@@ -226,7 +226,7 @@ describe("Teams Endpoints", () => {
 
       it("should return 400 Bad Request when teamId is invalid", async () => {
         const res = await request(app)
-          .delete("/teams/favorites")
+          .delete("/api/teams/favorites")
           .set("Cookie", [accessTokenCookie])
           .send({ teamId: "invalid-id" });
 
@@ -236,7 +236,7 @@ describe("Teams Endpoints", () => {
 
       it("should return 401 Unauthorized when token is missing", async () => {
         const res = await request(app)
-          .delete("/teams/favorites")
+          .delete("/api/teams/favorites")
           .send({ teamId: 8899 });
 
         expect(res.status).toBe(401);
@@ -245,7 +245,7 @@ describe("Teams Endpoints", () => {
 
       it("should return 404 Not Found when team does not exist", async () => {
         const res = await request(app)
-          .delete("/teams/favorites")
+          .delete("/api/teams/favorites")
           .set("Cookie", [accessTokenCookie])
           .send({ teamId: 99999 });
 

@@ -190,7 +190,7 @@ describe("Fixtures Endpoints", () => {
 
   describe("GET /fixtures", () => {
     it("should return all fixtures with their events included and sorted by group first, then round chronologically", async () => {
-      const res = await request(app).get("/fixtures");
+      const res = await request(app).get("/api/fixtures");
 
       expect(res.status).toBe(200);
       expect(Array.isArray(res.body)).toBe(true);
@@ -227,7 +227,7 @@ describe("Fixtures Endpoints", () => {
 
     it("should filter fixtures by round", async () => {
       const res = await request(app)
-        .get("/fixtures")
+        .get("/api/fixtures")
         .query({ round: "Round of 16" });
 
       expect(res.status).toBe(200);
@@ -240,7 +240,7 @@ describe("Fixtures Endpoints", () => {
 
     it("should filter fixtures by group name and only return group stage matches", async () => {
       const res = await request(app)
-        .get("/fixtures")
+        .get("/api/fixtures")
         .query({ group: "Test Group A" });
 
       expect(res.status).toBe(200);
@@ -254,7 +254,7 @@ describe("Fixtures Endpoints", () => {
       );
 
       const resB = await request(app)
-        .get("/fixtures")
+        .get("/api/fixtures")
         .query({ group: "Test Group B" });
 
       expect(resB.status).toBe(200);
@@ -270,7 +270,7 @@ describe("Fixtures Endpoints", () => {
 
     it("should filter fixtures by teamId", async () => {
       const res = await request(app)
-        .get("/fixtures")
+        .get("/api/fixtures")
         .query({ teamId: 8892 }); // Team B
 
       expect(res.status).toBe(200);
@@ -285,7 +285,7 @@ describe("Fixtures Endpoints", () => {
 
     it("should return 400 Bad Request when an invalid query parameter is provided", async () => {
       const res = await request(app)
-        .get("/fixtures")
+        .get("/api/fixtures")
         .query({ teamId: "not-a-number" });
 
       expect(res.status).toBe(400);
@@ -294,7 +294,7 @@ describe("Fixtures Endpoints", () => {
 
   describe("GET /fixtures/:id", () => {
     it("should return a single fixture with events, teams and groups by ID", async () => {
-      const res = await request(app).get(`/fixtures/${fixture4.id}`);
+      const res = await request(app).get(`/api/fixtures/${fixture4.id}`);
 
       expect(res.status).toBe(200);
       expect(res.body).toBeDefined();
@@ -316,12 +316,12 @@ describe("Fixtures Endpoints", () => {
     });
 
     it("should return 404 Not Found if fixture does not exist", async () => {
-      const res = await request(app).get("/fixtures/9999");
+      const res = await request(app).get("/api/fixtures/9999");
       expect(res.status).toBe(404);
     });
 
     it("should return 400 Bad Request when the ID is invalid", async () => {
-      const res = await request(app).get("/fixtures/not-an-id");
+      const res = await request(app).get("/api/fixtures/not-an-id");
       expect(res.status).toBe(400);
     });
   });

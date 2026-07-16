@@ -9,11 +9,12 @@ export class FixturesController {
   getFixtures = async (req: Request, res: Response): Promise<void> => {
     const parsed = res.locals.parsed as GetFixtures;
     const query = parsed?.query || {};
-    const fixtures = await this.fixturesService.getFixtures({
-      round: query.round,
-      group: query.group,
-      teamId: query.teamId,
-    });
+    const filters: { round?: string; group?: string; teamId?: number } = {};
+    if (query.round !== undefined) filters.round = query.round;
+    if (query.group !== undefined) filters.group = query.group;
+    if (query.teamId !== undefined) filters.teamId = query.teamId;
+
+    const fixtures = await this.fixturesService.getFixtures(filters);
     res.status(200).json(fixtures);
   };
 

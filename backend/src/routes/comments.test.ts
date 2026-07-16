@@ -93,10 +93,10 @@ describe("Fixture Comments Endpoints", () => {
 
     // Register & login User 1
     await request(app)
-      .post("/auth/register")
+      .post("/api/auth/register")
       .send({ email: userEmail1, username: "user1", password });
     const loginRes1 = await request(app)
-      .post("/auth/login")
+      .post("/api/auth/login")
       .send({ email: userEmail1, password });
     const cookies1 = loginRes1.headers["set-cookie"] as string[];
     userToken1 = cookies1.find((c) => c.startsWith("accessToken="))!;
@@ -104,10 +104,10 @@ describe("Fixture Comments Endpoints", () => {
 
     // Register & login User 2
     await request(app)
-      .post("/auth/register")
+      .post("/api/auth/register")
       .send({ email: userEmail2, username: "user2", password });
     const loginRes2 = await request(app)
-      .post("/auth/login")
+      .post("/api/auth/login")
       .send({ email: userEmail2, password });
     const cookies2 = loginRes2.headers["set-cookie"] as string[];
     userToken2 = cookies2.find((c) => c.startsWith("accessToken="))!;
@@ -115,11 +115,11 @@ describe("Fixture Comments Endpoints", () => {
 
     // Register, elevate & login Admin
     await request(app)
-      .post("/auth/register")
+      .post("/api/auth/register")
       .send({ email: adminEmail, username: "admin", password });
     await userRepo.update({ email: adminEmail }, { role: "admin" });
     const loginResAdmin = await request(app)
-      .post("/auth/login")
+      .post("/api/auth/login")
       .send({ email: adminEmail, password });
     const cookiesAdmin = loginResAdmin.headers["set-cookie"] as string[];
     adminToken = cookiesAdmin.find((c) => c.startsWith("accessToken="))!;
@@ -145,7 +145,7 @@ describe("Fixture Comments Endpoints", () => {
   describe("POST /fixtures/:fixtureId/comments", () => {
     it("should successfully post a comment when authenticated (201)", async () => {
       const res = await request(app)
-        .post(`/fixtures/${fixture.id}/comments`)
+        .post(`/api/fixtures/${fixture.id}/comments`)
         .set("Cookie", [userToken1])
         .send({ content: "What a thrilling match!" });
 
@@ -163,7 +163,7 @@ describe("Fixture Comments Endpoints", () => {
 
     it("should return 401 Unauthorized when not authenticated", async () => {
       const res = await request(app)
-        .post(`/fixtures/${fixture.id}/comments`)
+        .post(`/api/fixtures/${fixture.id}/comments`)
         .send({ content: "Comment without login" });
 
       expect(res.status).toBe(401);
@@ -173,7 +173,7 @@ describe("Fixture Comments Endpoints", () => {
     it("should return 400 Bad Request when content is empty or too long", async () => {
       // Empty content
       const resEmpty = await request(app)
-        .post(`/fixtures/${fixture.id}/comments`)
+        .post(`/api/fixtures/${fixture.id}/comments`)
         .set("Cookie", [userToken1])
         .send({ content: "" });
       expect(resEmpty.status).toBe(400);
@@ -181,7 +181,7 @@ describe("Fixture Comments Endpoints", () => {
       // Too long content (> 1000 characters)
       const longContent = "a".repeat(1001);
       const resLong = await request(app)
-        .post(`/fixtures/${fixture.id}/comments`)
+        .post(`/api/fixtures/${fixture.id}/comments`)
         .set("Cookie", [userToken1])
         .send({ content: longContent });
       expect(resLong.status).toBe(400);
@@ -189,7 +189,7 @@ describe("Fixture Comments Endpoints", () => {
 
     it("should return 404 Not Found if the fixture does not exist", async () => {
       const res = await request(app)
-        .post("/fixtures/999999/comments")
+        .post("/api/fixtures/999999/comments")
         .set("Cookie", [userToken1])
         .send({ content: "Should fail" });
 
@@ -202,7 +202,7 @@ describe("Fixture Comments Endpoints", () => {
     it("should return comments in descendant order (latest first)", async () => {
       // Post comment 1 (older)
       const res1 = await request(app)
-        .post(`/fixtures/${fixture.id}/comments`)
+        .post(`/api/fixtures/${fixture.id}/comments`)
         .set("Cookie", [userToken1])
         .send({ content: "First comment" });
 
@@ -211,11 +211,11 @@ describe("Fixture Comments Endpoints", () => {
 
       // Post comment 2 (newer)
       const res2 = await request(app)
-        .post(`/fixtures/${fixture.id}/comments`)
+        .post(`/api/fixtures/${fixture.id}/comments`)
         .set("Cookie", [userToken2])
         .send({ content: "Second comment" });
 
-      const getRes = await request(app).get(`/fixtures/${fixture.id}/comments`);
+      const getRes = await request(app).get(`/api/fixtures/${fixture.id}/comments`);
 
       expect(getRes.status).toBe(200);
       expect(Array.isArray(getRes.body)).toBe(true);
@@ -232,7 +232,7 @@ describe("Fixture Comments Endpoints", () => {
     });
 
     it("should return 404 Not Found if the fixture does not exist", async () => {
-      const res = await request(app).get("/fixtures/999999/comments");
+      const res = await request(app).get("/api/fixtures/999999/comments");
       expect(res.status).toBe(404);
       expect(res.body).toHaveProperty("error", "NotFoundError");
     });
@@ -243,7 +243,7 @@ describe("Fixture Comments Endpoints", () => {
 
     beforeEach(async () => {
       const res = await request(app)
-        .post(`/fixtures/${fixture.id}/comments`)
+        .post(`/api/fixtures/${fixture.id}/comments`)
         .set("Cookie", [userToken1])
         .send({ content: "Comment to delete" });
       commentId = res.body.id;
@@ -251,33 +251,33 @@ describe("Fixture Comments Endpoints", () => {
 
     it("should successfully delete the comment if the user is the owner (200)", async () => {
       const res = await request(app)
-        .delete(`/fixtures/${fixture.id}/comments/${commentId}`)
+        .delete(`/api/fixtures/${fixture.id}/comments/${commentId}`)
         .set("Cookie", [userToken1]);
 
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty("message", "Comment deleted successfully");
 
       // Verify not found in get
-      const getRes = await request(app).get(`/fixtures/${fixture.id}/comments`);
+      const getRes = await request(app).get(`/api/fixtures/${fixture.id}/comments`);
       expect(getRes.body.length).toBe(0);
     });
 
     it("should successfully delete the comment if the user is an admin (200)", async () => {
       const res = await request(app)
-        .delete(`/fixtures/${fixture.id}/comments/${commentId}`)
+        .delete(`/api/fixtures/${fixture.id}/comments/${commentId}`)
         .set("Cookie", [adminToken]);
 
       expect(res.status).toBe(200);
       expect(res.body).toHaveProperty("message", "Comment deleted successfully");
 
       // Verify not found in get
-      const getRes = await request(app).get(`/fixtures/${fixture.id}/comments`);
+      const getRes = await request(app).get(`/api/fixtures/${fixture.id}/comments`);
       expect(getRes.body.length).toBe(0);
     });
 
     it("should return 401 Unauthorized if not authenticated", async () => {
       const res = await request(app)
-        .delete(`/fixtures/${fixture.id}/comments/${commentId}`);
+        .delete(`/api/fixtures/${fixture.id}/comments/${commentId}`);
 
       expect(res.status).toBe(401);
       expect(res.body).toHaveProperty("error", "UnauthorizedError");
@@ -285,7 +285,7 @@ describe("Fixture Comments Endpoints", () => {
 
     it("should return 403 Forbidden if user is not the owner and not an admin", async () => {
       const res = await request(app)
-        .delete(`/fixtures/${fixture.id}/comments/${commentId}`)
+        .delete(`/api/fixtures/${fixture.id}/comments/${commentId}`)
         .set("Cookie", [userToken2]);
 
       expect(res.status).toBe(403);
@@ -294,7 +294,7 @@ describe("Fixture Comments Endpoints", () => {
 
     it("should return 404 Not Found if the comment does not exist", async () => {
       const res = await request(app)
-        .delete(`/fixtures/${fixture.id}/comments/999999`)
+        .delete(`/api/fixtures/${fixture.id}/comments/999999`)
         .set("Cookie", [userToken1]);
 
       expect(res.status).toBe(404);
@@ -322,7 +322,7 @@ describe("Fixture Comments Endpoints", () => {
 
       try {
         const res = await request(app)
-          .delete(`/fixtures/${fixture2.id}/comments/${commentId}`)
+          .delete(`/api/fixtures/${fixture2.id}/comments/${commentId}`)
           .set("Cookie", [userToken1]);
 
         expect(res.status).toBe(404);
