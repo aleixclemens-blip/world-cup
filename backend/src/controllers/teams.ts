@@ -8,7 +8,9 @@ export class TeamsController {
   getTeams = async (req: Request, res: Response): Promise<void> => {
     const parsed = res.locals.parsed as GetTeams;
     const name = parsed?.query?.name;
-    const teams = await this.teamsService.getTeamsWithGroups(name);
+    const orderBy = parsed?.query?.orderBy;
+    const orderDir = parsed?.query?.orderDir;
+    const teams = await this.teamsService.getTeamsWithGroups(name, orderBy, orderDir);
     res.status(200).json(teams);
   };
 

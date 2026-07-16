@@ -10,9 +10,13 @@ import { ApiTeam, Team } from '../types/teams.types';
 export class TeamsService {
   private readonly http = inject(HttpClient);
 
-  public getTeams(name?: string): Observable<Team[]> {
-    const options = name ? { params: { name } } : {};
-    return this.http.get<ApiTeam[]>(`${API_URL}/teams`, options).pipe(
+  public getTeams(name?: string, orderBy?: string, orderDir?: string): Observable<Team[]> {
+    const params: Record<string, string> = {};
+    if (name) params['name'] = name;
+    if (orderBy) params['orderBy'] = orderBy;
+    if (orderDir) params['orderDir'] = orderDir;
+
+    return this.http.get<ApiTeam[]>(`${API_URL}/teams`, { params }).pipe(
       map((apiTeams) =>
         apiTeams.map((team) => ({
           ...team,

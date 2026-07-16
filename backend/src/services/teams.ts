@@ -1,4 +1,4 @@
-import { Repository, Like } from "typeorm";
+import { Repository, Like, FindManyOptions } from "typeorm";
 import { Team } from "../entities/Team";
 import { User } from "../entities/User";
 import { NotFoundError } from "../lib/errors";
@@ -7,20 +7,31 @@ export class TeamsService {
   constructor(
     private teamRepository: Repository<Team>,
     private userRepository: Repository<User>,
-  ) {}
+  ) { }
 
-  async getTeamsWithGroups(name?: string): Promise<Team[]> {
-    if (name) {
-      return this.teamRepository.find({
-        where: {
-          name: Like(`%${name}%`),
-        },
-        relations: ["group"],
-      });
-    }
-    return this.teamRepository.find({
+  async getTeamsWithGroups(
+    name?: string,
+    orderBy?: "id" | "name" | "founded" | "mainStadium" | "mainStadiumCity" | "groupId" | "worldCupsWon" | "continentCupsWon" | "continentCupName",
+    orderDir?: "asc" | "desc" | "ASC" | "DESC"
+  ): Promise<Team[]> {
+    const findOptions: FindManyOptions<Team> = {
       relations: ["group"],
-    });
+    };
+
+    if (name) {
+      findOptions.where = {
+        name: Like(`%${name}%`),
+      };
+    }
+
+    if (orderBy) {
+      const dir = orderDir?.toUpperCase() === "DESC" ? "DESC" : "ASC";
+      findOptions.order = {
+        [orderBy]: dir,
+      };
+    }
+
+    return this.teamRepository.find(findOptions);
   }
 
   async addFavoriteTeam(userId: number, teamId: number): Promise<void> {

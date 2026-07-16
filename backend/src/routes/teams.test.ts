@@ -27,6 +27,8 @@ describe("Teams Endpoints", () => {
 
     // Clean up
     await teamRepo.delete({ id: 8899 });
+    await teamRepo.delete({ id: 8898 });
+    await teamRepo.delete({ id: 8897 });
     await groupRepo.delete({ name: "Test Group Teams" });
 
     // Create Group
@@ -34,7 +36,7 @@ describe("Teams Endpoints", () => {
     group.name = "Test Group Teams";
     await groupRepo.save(group);
 
-    // Create Team
+    // Create Teams
     team = new Team();
     team.id = 8899;
     team.name = "Test Team A";
@@ -43,6 +45,24 @@ describe("Teams Endpoints", () => {
     team.mainStadiumCity = "City A";
     team.group = group;
     await teamRepo.save(team);
+
+    const team2 = new Team();
+    team2.id = 8898;
+    team2.name = "Test Team B";
+    team2.founded = 2020;
+    team2.mainStadium = "Stadium B";
+    team2.mainStadiumCity = "City B";
+    team2.group = group;
+    await teamRepo.save(team2);
+
+    const team3 = new Team();
+    team3.id = 8897;
+    team3.name = "Test Team C";
+    team3.founded = 2024;
+    team3.mainStadium = "Stadium C";
+    team3.mainStadiumCity = "City C";
+    team3.group = group;
+    await teamRepo.save(team3);
   });
 
   afterEach(async () => {
@@ -50,6 +70,8 @@ describe("Teams Endpoints", () => {
     const teamRepo = AppDataSource.getRepository(Team);
 
     await teamRepo.delete({ id: 8899 });
+    await teamRepo.delete({ id: 8898 });
+    await teamRepo.delete({ id: 8897 });
     if (group?.id) {
       await groupRepo.delete({ id: group.id });
     }
@@ -91,6 +113,48 @@ describe("Teams Endpoints", () => {
       expect(res.status).toBe(200);
       expect(Array.isArray(res.body)).toBe(true);
       expect(res.body.length).toBe(0);
+    });
+
+    it("should sort teams by founded column in ascending order", async () => {
+      const res = await request(app).get("/api/teams?orderBy=founded&orderDir=asc");
+
+      expect(res.status).toBe(200);
+      expect(Array.isArray(res.body)).toBe(true);
+
+      const targetTeams = res.body.filter((t: any) => [8897, 8898, 8899].includes(t.id));
+      expect(targetTeams).toHaveLength(3);
+      // Expected order: 2020 (8898), 2024 (8897), 2026 (8899)
+      expect(targetTeams[0].id).toBe(8898);
+      expect(targetTeams[1].id).toBe(8897);
+      expect(targetTeams[2].id).toBe(8899);
+    });
+
+    it("should sort teams by founded column in descending order", async () => {
+      const res = await request(app).get("/api/teams?orderBy=founded&orderDir=DESC");
+
+      expect(res.status).toBe(200);
+      expect(Array.isArray(res.body)).toBe(true);
+
+      const targetTeams = res.body.filter((t: any) => [8897, 8898, 8899].includes(t.id));
+      expect(targetTeams).toHaveLength(3);
+      // Expected order: 2026 (8899), 2024 (8897), 2020 (8898)
+      expect(targetTeams[0].id).toBe(8899);
+      expect(targetTeams[1].id).toBe(8897);
+      expect(targetTeams[2].id).toBe(8898);
+    });
+
+    it("should return 400 Bad Request when an invalid orderBy column is provided", async () => {
+      const res = await request(app).get("/api/teams?orderBy=invalidColumnName");
+
+      expect(res.status).toBe(400);
+      expect(res.body).toHaveProperty("error", "ValidationError");
+    });
+
+    it("should return 400 Bad Request when an invalid orderDir is provided", async () => {
+      const res = await request(app).get("/api/teams?orderBy=name&orderDir=invalidDir");
+
+      expect(res.status).toBe(400);
+      expect(res.body).toHaveProperty("error", "ValidationError");
     });
 
     it("should return 400 Bad Request when an invalid query parameter is provided", async () => {

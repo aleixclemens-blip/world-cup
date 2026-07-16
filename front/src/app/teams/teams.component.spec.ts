@@ -229,7 +229,7 @@ describe('TeamsComponent', () => {
     await new Promise((resolve) => setTimeout(resolve, 350));
     fixture.detectChanges();
 
-    expect(teamsServiceMock.getTeams).toHaveBeenCalledWith('Bel');
+    expect(teamsServiceMock.getTeams).toHaveBeenCalledWith('Bel', undefined, undefined);
 
     // Test clear search
     teamsServiceMock.getTeams.mockClear();
@@ -238,6 +238,60 @@ describe('TeamsComponent', () => {
     
     await new Promise((resolve) => setTimeout(resolve, 350));
     fixture.detectChanges();
-    expect(teamsServiceMock.getTeams).toHaveBeenCalledWith('');
+    expect(teamsServiceMock.getTeams).toHaveBeenCalledWith('', undefined, undefined);
+  });
+
+  it('should cycle sorting parameters when calling toggleSort', () => {
+    const fixture = TestBed.createComponent(TeamsComponent);
+    const component = fixture.componentInstance;
+
+    expect(component['orderBy']()).toBeNull();
+    expect(component['orderDir']()).toBeNull();
+
+    // First toggle -> asc
+    component['toggleSort']('name');
+    expect(component['orderBy']()).toBe('name');
+    expect(component['orderDir']()).toBe('asc');
+
+    // Second toggle -> desc
+    component['toggleSort']('name');
+    expect(component['orderBy']()).toBe('name');
+    expect(component['orderDir']()).toBe('desc');
+
+    // Third toggle -> none (null)
+    component['toggleSort']('name');
+    expect(component['orderBy']()).toBeNull();
+    expect(component['orderDir']()).toBeNull();
+
+    // Toggle on a different column -> starts with asc
+    component['toggleSort']('worldCupsWon');
+    expect(component['orderBy']()).toBe('worldCupsWon');
+    expect(component['orderDir']()).toBe('asc');
+  });
+
+  it('should debounce sorting parameter changes and load ordered teams', async () => {
+    const fixture = TestBed.createComponent(TeamsComponent);
+    const component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    teamsServiceMock.getTeams.mockClear();
+
+    // Toggle sort on name
+    component['toggleSort']('name');
+    
+    // Wait for debounce (300ms + buffer)
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    fixture.detectChanges();
+
+    expect(teamsServiceMock.getTeams).toHaveBeenCalledWith('', 'name', 'asc');
+
+    // Change direction to desc
+    teamsServiceMock.getTeams.mockClear();
+    component['toggleSort']('name');
+
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    fixture.detectChanges();
+
+    expect(teamsServiceMock.getTeams).toHaveBeenCalledWith('', 'name', 'desc');
   });
 });

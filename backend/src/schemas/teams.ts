@@ -19,6 +19,20 @@ export const GetTeamsSchema = z.object({
   query: z
     .object({
       name: z.string().optional(),
+      orderBy: z
+        .enum([
+          "id",
+          "name",
+          "founded",
+          "mainStadium",
+          "mainStadiumCity",
+          "groupId",
+          "worldCupsWon",
+          "continentCupsWon",
+          "continentCupName",
+        ])
+        .optional(),
+      orderDir: z.enum(["asc", "desc", "ASC", "DESC"]).optional(),
     })
     .strict(),
   body: z.object({}).strict().optional(),

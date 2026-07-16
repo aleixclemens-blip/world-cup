@@ -89,10 +89,75 @@
       <div
         class="grid grid-cols-[4rem_1.5fr_2fr_1.5fr_1fr_4rem] gap-4 items-center px-6 py-4 text-xs font-bold text-gray-400 uppercase select-none border-b border-gray-100 bg-gray-50/50">
         <div class="text-center">Bandera</div>
-        <div>Equipo</div>
-        <div>Estadio</div>
-        <div>Logros / Palmarés</div>
-        <div class="text-center">Grupo</div>
+        
+        <button
+          type="button"
+          (click)="toggleSort('name')"
+          class="flex items-center gap-1 hover:text-gray-700 transition-colors uppercase font-bold text-xs cursor-pointer focus:outline-none text-left"
+          [class.text-gray-700]="orderBy() === 'name'"
+          [class.text-gray-400]="orderBy() !== 'name'"
+          [attr.aria-sort]="orderBy() === 'name' ? (orderDir() === 'asc' ? 'ascending' : 'descending') : 'none'">
+          <span>Equipo</span>
+          @if (orderBy() === 'name') {
+            <span class="material-icons text-sm select-none">
+              {{ orderDir() === 'asc' ? 'arrow_upward' : 'arrow_downward' }}
+            </span>
+          } @else {
+            <span class="material-icons text-sm select-none opacity-45 hover:opacity-100">swap_vert</span>
+          }
+        </button>
+
+        <button
+          type="button"
+          (click)="toggleSort('mainStadium')"
+          class="flex items-center gap-1 hover:text-gray-700 transition-colors uppercase font-bold text-xs cursor-pointer focus:outline-none text-left"
+          [class.text-gray-700]="orderBy() === 'mainStadium'"
+          [class.text-gray-400]="orderBy() !== 'mainStadium'"
+          [attr.aria-sort]="orderBy() === 'mainStadium' ? (orderDir() === 'asc' ? 'ascending' : 'descending') : 'none'">
+          <span>Estadio</span>
+          @if (orderBy() === 'mainStadium') {
+            <span class="material-icons text-sm select-none">
+              {{ orderDir() === 'asc' ? 'arrow_upward' : 'arrow_downward' }}
+            </span>
+          } @else {
+            <span class="material-icons text-sm select-none opacity-45 hover:opacity-100">swap_vert</span>
+          }
+        </button>
+
+        <button
+          type="button"
+          (click)="toggleSort('worldCupsWon')"
+          class="flex items-center gap-1 hover:text-gray-700 transition-colors uppercase font-bold text-xs cursor-pointer focus:outline-none text-left"
+          [class.text-gray-700]="orderBy() === 'worldCupsWon'"
+          [class.text-gray-400]="orderBy() !== 'worldCupsWon'"
+          [attr.aria-sort]="orderBy() === 'worldCupsWon' ? (orderDir() === 'asc' ? 'ascending' : 'descending') : 'none'">
+          <span>Logros / Palmarés</span>
+          @if (orderBy() === 'worldCupsWon') {
+            <span class="material-icons text-sm select-none">
+              {{ orderDir() === 'asc' ? 'arrow_upward' : 'arrow_downward' }}
+            </span>
+          } @else {
+            <span class="material-icons text-sm select-none opacity-45 hover:opacity-100">swap_vert</span>
+          }
+        </button>
+
+        <button
+          type="button"
+          (click)="toggleSort('groupId')"
+          class="flex justify-center items-center gap-1 hover:text-gray-700 transition-colors uppercase font-bold text-xs cursor-pointer focus:outline-none w-full text-center"
+          [class.text-gray-700]="orderBy() === 'groupId'"
+          [class.text-gray-400]="orderBy() !== 'groupId'"
+          [attr.aria-sort]="orderBy() === 'groupId' ? (orderDir() === 'asc' ? 'ascending' : 'descending') : 'none'">
+          <span>Grupo</span>
+          @if (orderBy() === 'groupId') {
+            <span class="material-icons text-sm select-none">
+              {{ orderDir() === 'asc' ? 'arrow_upward' : 'arrow_downward' }}
+            </span>
+          } @else {
+            <span class="material-icons text-sm select-none opacity-45 hover:opacity-100">swap_vert</span>
+          }
+        </button>
+
         <div class="text-center">Favorito</div>
       </div>
  

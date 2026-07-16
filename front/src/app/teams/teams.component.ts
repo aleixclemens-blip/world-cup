@@ -20,11 +20,15 @@ export class TeamsComponent {
   protected readonly isLoading = signal<boolean>(true);
   protected readonly error = signal<string | null>(null);
   protected readonly searchQuery = signal<string>('');
+  protected readonly orderBy = signal<string | null>(null);
+  protected readonly orderDir = signal<'asc' | 'desc' | null>(null);
   protected readonly retryTrigger = signal<number>(0);
 
-  // Combine searchQuery and retryTrigger
+  // Combine searchQuery, orderBy, orderDir, and retryTrigger
   private readonly queryTrigger = computed(() => ({
     query: this.searchQuery(),
+    orderBy: this.orderBy(),
+    orderDir: this.orderDir(),
     retry: this.retryTrigger()
   }));
 
@@ -32,14 +36,23 @@ export class TeamsComponent {
   private readonly loadedTeams = toSignal(
     toObservable(this.queryTrigger).pipe(
       debounceTime(300),
-      distinctUntilChanged((a, b) => a.query === b.query && a.retry === b.retry),
+      distinctUntilChanged((a, b) => 
+        a.query === b.query && 
+        a.orderBy === b.orderBy && 
+        a.orderDir === b.orderDir && 
+        a.retry === b.retry
+      ),
       tap(() => {
         this.isLoading.set(true);
         this.error.set(null);
       }),
       switchMap((trigger) =>
         forkJoin({
-          teamsData: this.teamsService.getTeams(trigger.query),
+          teamsData: this.teamsService.getTeams(
+            trigger.query,
+            trigger.orderBy ?? undefined,
+            trigger.orderDir ?? undefined
+          ),
           favoritesData: this.authService.isAuthenticated()
             ? this.teamsService.getFavoriteTeams().pipe(catchError(() => of([])))
             : of([])
@@ -74,6 +87,25 @@ export class TeamsComponent {
 
   protected clearSearch(): void {
     this.searchQuery.set('');
+  }
+
+  protected toggleSort(column: string): void {
+    const currentColumn = this.orderBy();
+    const currentDirection = this.orderDir();
+
+    if (currentColumn === column) {
+      if (currentDirection === 'asc') {
+        this.orderDir.set('desc');
+      } else if (currentDirection === 'desc') {
+        this.orderBy.set(null);
+        this.orderDir.set(null);
+      } else {
+        this.orderDir.set('asc');
+      }
+    } else {
+      this.orderBy.set(column);
+      this.orderDir.set('asc');
+    }
   }
 
   protected viewTeamDetail(teamId: number): void {
